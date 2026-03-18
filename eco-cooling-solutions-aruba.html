@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Cooling Solutions Aruba - Your Ice Cold Airco Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #fff;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ===== COLOR PALETTE ===== */
+        :root {
+            --primary: #0077B6;       /* deep ocean blue */
+            --primary-dark: #023E8A;  /* navy */
+            --accent: #00B4D8;        /* bright cyan */
+            --accent-light: #90E0EF;  /* ice blue */
+            --highlight: #F77F00;     /* warm orange for CTAs */
+            --highlight-hover: #E06C00;
+            --dark: #1B2A4A;
+            --light-bg: #F0F7FA;
+            --white: #ffffff;
+            --text: #333333;
+            --text-light: #666666;
+            --gradient-hero: linear-gradient(135deg, rgba(2, 62, 138, 0.85), rgba(0, 119, 182, 0.75));
+            --gradient-cta: linear-gradient(135deg, #023E8A, #0077B6);
+        }
+
+        /* ===== HEADER / NAVIGATION ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.97);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .logo-text h1 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+        .logo-text span {
+            font-size: 10px;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .nav { display: flex; align-items: center; gap: 5px; }
+        .nav a {
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        .nav a:hover { color: var(--primary); background: var(--light-bg); }
+        .nav-icons { display: flex; align-items: center; gap: 10px; margin-left: 10px; }
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .nav-icon:hover { border-color: var(--primary); background: var(--light-bg); }
+        .nav-icon svg { width: 18px; height: 18px; stroke: var(--dark); }
+
+        .btn-cta {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--highlight);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-cta:hover { background: var(--highlight-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(247,127,0,0.3); }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-outline:hover { background: var(--primary); color: #fff; }
+
+        /* ===== MOBILE MENU ===== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #023e8a 0%, #0077b6 25%, #00b4d8 50%, #48cae4 70%, #90e0ef 85%, #caf0f8 100%);
+            margin-top: 85px;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 70% 60%, rgba(0, 180, 216, 0.4), transparent),
+                radial-gradient(ellipse 60% 80% at 20% 80%, rgba(2, 62, 138, 0.5), transparent),
+                radial-gradient(circle at 80% 20%, rgba(144, 224, 239, 0.3), transparent);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.03) 60px, rgba(255,255,255,0.03) 61px),
+                repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.03) 60px, rgba(255,255,255,0.03) 61px);
+            z-index: 1;
+        }
+        @keyframes float-blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -40px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+        }
+        .hero h2 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.2;
+            max-width: 700px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            max-width: 500px;
+            margin-bottom: 35px;
+        }
+        .hero-cta { display: flex; gap: 15px; flex-wrap: wrap; }
+        .hero-cta .btn-cta { padding: 16px 36px; font-size: 14px; }
+        .hero-cta .btn-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 30px;
+            border: 2px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .hero-cta .btn-white:hover { background: rgba(255,255,255,0.25); }
+
+        /* Wave separator */
+        .wave-divider {
+            position: relative;
+            margin-top: -1px;
+        }
+        .wave-divider svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* ===== SERVICE CARDS ===== */
+        .services-intro {
+            padding: 80px 0 20px;
+            text-align: center;
+        }
+        .services-intro h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .services-intro h3 {
+            font-size: 36px;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+        .services-intro p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 40px 0 80px;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+            transition: all 0.4s;
+            border: 1px solid #f0f0f0;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,119,182,0.12);
+            border-color: var(--accent-light);
+        }
+        .service-card .icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: var(--light-bg);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .service-card:hover .icon { background: var(--primary); }
+        .service-card .icon svg { width: 32px; height: 32px; stroke: var(--primary); transition: all 0.3s; }
+        .service-card:hover .icon svg { stroke: #fff; }
+        .service-card h4 {
+            font-size: 18px;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+        .service-card p { font-size: 14px; color: var(--text-light); }
+        .service-card .read-more {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--highlight);
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .service-card .read-more:hover { color: var(--highlight-hover); }
+
+        /* ===== BRAND LOGOS ===== */
+        .brands {
+            padding: 50px 0;
+            background: var(--light-bg);
+        }
+        .brands-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .brand-item {
+            background: #fff;
+            padding: 18px 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #555;
+            transition: all 0.3s;
+        }
+        .brand-item:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+
+        /* ===== PROCESS / 4 STEPS ===== */
+        .process {
+            position: relative;
+            padding: 100px 0;
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80') center/cover no-repeat;
+        }
+        .process::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .process-content {
+            position: relative;
+            z-index: 2;
+        }
+        .process-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        .process-text h2 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .process-text p {
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        .process-text .btn-cta { margin-top: 10px; }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .step {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 16px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s;
+        }
+        .step:hover { background: rgba(255,255,255,0.18); transform: translateY(-5px); }
+        .step .step-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 15px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .step .step-icon svg { width: 30px; height: 30px; stroke: var(--accent); }
+        .step h4 { font-size: 16px; color: #fff; margin-bottom: 5px; }
+        .step p { font-size: 13px; color: rgba(255,255,255,0.7); }
+
+        /* ===== TRUST BADGES ===== */
+        .trust {
+            padding: 60px 0;
+            background: #fff;
+        }
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+        .trust-item { display: flex; align-items: center; gap: 15px; }
+        .trust-check {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            background: var(--highlight);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .trust-check svg { width: 22px; height: 22px; stroke: #fff; stroke-width: 3; }
+        .trust-item p { font-weight: 600; font-size: 15px; color: var(--dark); text-align: left; }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            position: relative;
+            padding: 100px 0;
+            background: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&q=80') center/cover no-repeat;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.4) 100%);
+        }
+        .about-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-text h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .about-text h3 {
+            font-size: 32px;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        .about-text .btn-cta { margin-top: 15px; }
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* ===== PROJECTS GALLERY ===== */
+        .projects {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        .projects .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .projects .section-header h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .projects .section-header h3 {
+            font-size: 36px;
+            color: var(--primary-dark);
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .project-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 280px;
+            cursor: pointer;
+        }
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .project-card:hover img { transform: scale(1.08); }
+        .project-card .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(2,62,138,0.85) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .project-card:hover .overlay { opacity: 1; }
+        .project-card .overlay h4 { color: #fff; font-size: 16px; }
+        .project-card .overlay p { color: rgba(255,255,255,0.8); font-size: 13px; }
+
+        /* ===== SERVICES DETAIL ===== */
+        .services-detail {
+            position: relative;
+            padding: 100px 0;
+            background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600&q=80') center/cover no-repeat;
+        }
+        .services-detail::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(27,42,74,0.92);
+        }
+        .services-detail-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .services-detail-text h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .services-detail-text h3 {
+            font-size: 32px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .services-detail-text p {
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        .services-detail-text .btn-cta { margin-top: 15px; }
+
+        .services-list {
+            display: grid;
+            gap: 12px;
+        }
+        .service-list-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        .service-list-item:hover { background: rgba(255,255,255,0.14); }
+        .service-list-item svg { width: 22px; height: 22px; stroke: var(--highlight); min-width: 22px; }
+        .service-list-item span { color: #fff; font-weight: 500; font-size: 15px; }
+
+        /* ===== CALLBACK / CTA SECTION ===== */
+        .callback {
+            background: var(--gradient-cta);
+            padding: 60px 0;
+        }
+        .callback-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .callback h3 {
+            font-size: 28px;
+            color: #fff;
+            max-width: 400px;
+        }
+        .callback-form {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .callback-form input[type="tel"] {
+            padding: 14px 24px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            font-size: 15px;
+            font-family: 'Open Sans', sans-serif;
+            min-width: 220px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .callback-form input[type="tel"]::placeholder { color: rgba(255,255,255,0.6); }
+        .callback-form input[type="tel"]:focus { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.2); }
+
+        .callback-options {
+            display: flex;
+            gap: 15px;
+            color: #fff;
+            font-size: 14px;
+        }
+        .callback-options label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+        .callback-options input[type="checkbox"] { accent-color: var(--highlight); }
+
+        .btn-callback {
+            padding: 14px 32px;
+            background: var(--highlight);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-callback:hover { background: var(--highlight-hover); transform: translateY(-2px); }
+
+        /* ===== CONTACT FORM SECTION ===== */
+        .contact {
+            padding: 80px 0;
+            background: #fff;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .contact-info h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .contact-info h3 {
+            font-size: 32px;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .contact-detail .ci-icon {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-detail .ci-icon svg { width: 20px; height: 20px; stroke: var(--primary); }
+        .contact-detail div h5 { font-size: 14px; color: var(--dark); margin-bottom: 2px; }
+        .contact-detail div p { font-size: 14px; color: var(--text-light); margin: 0; }
+
+        .contact-form { display: grid; gap: 15px; }
+        .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .contact-form input, .contact-form textarea, .contact-form select {
+            padding: 14px 18px;
+            border: 2px solid #e8e8e8;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: 'Open Sans', sans-serif;
+            transition: all 0.3s;
+            outline: none;
+            background: #fafafa;
+        }
+        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+            border-color: var(--primary);
+            background: #fff;
+        }
+        .contact-form textarea { resize: vertical; min-height: 120px; }
+
+        /* ===== FOOTER BANNER ===== */
+        .footer-banner {
+            background: var(--gradient-cta);
+            padding: 25px 0;
+            text-align: center;
+        }
+        .footer-banner p {
+            color: rgba(255,255,255,0.85);
+            font-size: 14px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            padding: 60px 0 30px;
+            color: rgba(255,255,255,0.7);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            transition: color 0.3s;
+        }
+        .footer-col ul li a:hover { color: var(--accent); }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .footer-social a:hover { background: var(--primary); }
+        .footer-social a svg { width: 18px; height: 18px; fill: #fff; }
+
+        .footer-stars { margin-top: 15px; }
+        .footer-stars span { color: var(--highlight); font-size: 20px; }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 25px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .process-steps { grid-template-columns: repeat(2, 1fr); }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .header-inner { padding: 10px 20px; }
+            .nav { display: none; }
+            .hamburger { display: flex; }
+            .nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 85px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            .nav-icons { display: none; }
+            .hero { min-height: 80vh; margin-top: 75px; }
+            .hero h2 { font-size: 30px; }
+            .process-top { grid-template-columns: 1fr; }
+            .process-steps { grid-template-columns: 1fr 1fr; }
+            .about-content { grid-template-columns: 1fr; }
+            .services-detail-content { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .contact-form .form-row { grid-template-columns: 1fr; }
+            .trust-grid { grid-template-columns: 1fr; gap: 20px; }
+            .callback-inner { flex-direction: column; text-align: center; }
+            .callback h3 { max-width: 100%; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== EYE-CATCHING UPGRADES ===== */
+
+        /* Shimmer animation for headings */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 180, 216, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(0, 180, 216, 0.4), 0 0 60px rgba(0, 119, 182, 0.15); }
+        }
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes slide-in-left {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slide-in-right {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes counter-glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(247, 127, 0, 0.3); }
+            50% { text-shadow: 0 0 25px rgba(247, 127, 0, 0.6), 0 0 50px rgba(247, 127, 0, 0.2); }
+        }
+        @keyframes border-dance {
+            0% { border-image-source: linear-gradient(0deg, var(--accent), var(--primary), var(--highlight)); }
+            33% { border-image-source: linear-gradient(120deg, var(--primary), var(--highlight), var(--accent)); }
+            66% { border-image-source: linear-gradient(240deg, var(--highlight), var(--accent), var(--primary)); }
+            100% { border-image-source: linear-gradient(360deg, var(--accent), var(--primary), var(--highlight)); }
+        }
+        @keyframes icon-bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        /* Gradient text for section titles */
+        .services-intro h3,
+        .projects .section-header h3,
+        .about-text h3,
+        .contact-info h3 {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Header glass effect */
+        .header {
+            background: rgba(255,255,255,0.85) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,119,182,0.08);
+        }
+
+        /* Animated gradient border on service cards */
+        .service-card {
+            position: relative;
+            background: #fff;
+            border: none !important;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(135deg, transparent 40%, var(--accent-light) 50%, transparent 60%);
+            background-size: 300% 300%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .service-card:hover::before {
+            opacity: 1;
+            animation: gradient-shift 3s ease infinite;
+        }
+        .service-card:hover {
+            box-shadow: 0 20px 50px rgba(0,119,182,0.18), 0 0 30px rgba(0,180,216,0.08) !important;
+        }
+        .service-card:hover .icon {
+            animation: icon-bounce 0.5s ease;
+            background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+        }
+
+        /* Glowing CTA buttons */
+        .btn-cta {
+            background: linear-gradient(135deg, #F77F00, #FF9E40, #F77F00) !important;
+            background-size: 200% 200% !important;
+            animation: gradient-shift 4s ease infinite;
+            box-shadow: 0 4px 15px rgba(247,127,0,0.3);
+        }
+        .btn-cta:hover {
+            box-shadow: 0 8px 30px rgba(247,127,0,0.45), 0 0 20px rgba(247,127,0,0.2) !important;
+            transform: translateY(-3px) scale(1.02) !important;
+        }
+
+        /* Brand items hover glow */
+        .brand-item {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .brand-item:hover {
+            box-shadow: 0 8px 30px rgba(0,119,182,0.15), 0 0 15px rgba(0,180,216,0.08) !important;
+            transform: translateY(-5px) scale(1.05) !important;
+            color: var(--primary) !important;
+        }
+
+        /* Step cards glow */
+        .step {
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .step:hover {
+            background: rgba(255,255,255,0.2) !important;
+            transform: translateY(-8px) !important;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 0 30px rgba(255,255,255,0.05);
+        }
+        .step:hover .step-icon {
+            border-color: var(--highlight) !important;
+            box-shadow: 0 0 20px rgba(0,180,216,0.3);
+        }
+        .step:hover .step-icon svg {
+            stroke: var(--highlight) !important;
+        }
+
+        /* Project cards enhanced */
+        .project-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .project-card:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2) !important;
+        }
+        .project-card .overlay {
+            background: linear-gradient(to top, rgba(2,62,138,0.9) 0%, rgba(0,119,182,0.4) 40%, transparent 70%) !important;
+        }
+
+        /* Trust badges float animation */
+        .trust-check {
+            animation: glow-pulse 3s ease-in-out infinite;
+            background: linear-gradient(135deg, var(--highlight), #FF9E40) !important;
+        }
+
+        /* Contact form inputs glow */
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--accent) !important;
+            box-shadow: 0 0 15px rgba(0,180,216,0.15), 0 0 5px rgba(0,180,216,0.1);
+        }
+
+        /* Callback section animated gradient */
+        .callback {
+            background: linear-gradient(135deg, #023E8A, #0077B6, #00B4D8, #0077B6, #023E8A) !important;
+            background-size: 300% 300% !important;
+            animation: gradient-shift 8s ease infinite;
+        }
+
+        /* WhatsApp floating button enhanced */
+        .whatsapp-float {
+            box-shadow: 0 6px 25px rgba(37,211,102,0.4) !important;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.15) !important;
+            box-shadow: 0 10px 35px rgba(37,211,102,0.5), 0 0 20px rgba(37,211,102,0.2) !important;
+        }
+
+        /* Nav icon hover effects */
+        .nav-icon {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .nav-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,119,182,0.2);
+        }
+
+        /* Service list items stagger */
+        .service-list-item {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .service-list-item:hover {
+            background: rgba(255,255,255,0.18) !important;
+            transform: translateX(8px);
+            box-shadow: -4px 0 0 var(--highlight);
+        }
+
+        /* Footer social icons */
+        .footer-social a {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .footer-social a:hover {
+            background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+            transform: translateY(-4px) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(0,119,182,0.3);
+        }
+
+        /* Animated section divider lines */
+        .services-intro h2::after,
+        .projects .section-header h2::after,
+        .contact-info h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--highlight));
+            margin: 12px auto 0;
+            border-radius: 3px;
+        }
+        .contact-info h2::after {
+            margin: 12px 0 0;
+        }
+
+        /* Smooth parallax-like scroll effect on sections */
+        .about, .process, .services-detail {
+            background-attachment: fixed;
+        }
+
+        /* Logo subtle animation */
+        .logo-icon {
+            transition: all 0.4s ease !important;
+        }
+        .logo:hover .logo-icon {
+            transform: rotate(5deg) scale(1.08);
+            filter: drop-shadow(0 4px 8px rgba(0,119,182,0.2));
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+    <div class="header-inner">
+        <a href="#" class="logo">
+            <div class="logo-icon"><img src="ecs-logo.png" alt="ECS Logo"></div>
+            <div class="logo-text">
+                <h1>Eco Cooling Solutions</h1>
+                <span>Aruba's #1 Airco Service</span>
+            </div>
+        </a>
+        <nav class="nav" id="mainNav">
+            <a href="#services">Services</a>
+            <a href="#about">About Us</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-icons">
+            <a href="tel:+2975945773" class="nav-icon" title="Call Us">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
+            </a>
+            <a href="https://wa.me/2975945773" class="nav-icon" title="WhatsApp Us" target="_blank" style="border-color: #25D366;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+            <a href="mailto:info@ecocoolingaruba.com" class="nav-icon" title="Email Us">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+            </a>
+            <a href="#contact" class="btn-cta" style="margin-left: 5px;">Request Quote</a>
+        </div>
+        <div class="hamburger" onclick="document.getElementById('mainNav').classList.toggle('active')">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <!-- Animated background blobs -->
+    <div style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;">
+        <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,180,216,0.25),transparent 70%);top:-10%;right:-5%;animation:float-blob 8s ease-in-out infinite;"></div>
+        <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(72,202,228,0.2),transparent 70%);bottom:10%;left:-8%;animation:float-blob 12s ease-in-out infinite reverse;"></div>
+        <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(144,224,239,0.2),transparent 70%);top:40%;right:30%;animation:float-blob 10s ease-in-out infinite 2s;"></div>
+        <!-- Decorative snowflake SVG -->
+        <svg style="position:absolute;top:15%;right:8%;width:120px;height:120px;opacity:0.08;animation:float-blob 15s ease-in-out infinite;" viewBox="0 0 100 100" fill="white"><path d="M50 5v90M5 50h90M50 5l15 15M50 5L35 15M50 95l15-15M50 95L35 85M5 50l15 15M5 50l15-15M95 50l-15 15M95 50l-15-15M50 50l25-43.3M50 50l-25-43.3M50 50l25 43.3M50 50l-25 43.3M50 50L6.7 25M50 50l43.3-25M50 50L6.7 75M50 50l43.3 25" stroke="white" stroke-width="2" fill="none"/></svg>
+        <svg style="position:absolute;bottom:20%;left:12%;width:80px;height:80px;opacity:0.06;animation:float-blob 18s ease-in-out infinite 4s;" viewBox="0 0 100 100" fill="white"><path d="M50 5v90M5 50h90M50 5l15 15M50 5L35 15M50 95l15-15M50 95L35 85M5 50l15 15M5 50l15-15M95 50l-15 15M95 50l-15-15" stroke="white" stroke-width="2.5" fill="none"/></svg>
+    </div>
+    <div class="hero-content">
+        <h2 style="background: linear-gradient(90deg, #fff 0%, #fff 40%, #90e0ef 50%, #fff 60%, #fff 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 4s linear infinite;">Professional Cooling Solutions for Optimal Comfort</h2>
+        <p>Expert air conditioning installation, repair, and maintenance for homes and businesses across Aruba. Ask for your ice cold airco service!</p>
+        <div class="hero-cta">
+            <a href="#contact" class="btn-cta">Request a Quote</a>
+            <a href="https://wa.me/2975945773" target="_blank" class="btn-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp Us
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Wave -->
+<div class="wave-divider">
+    <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 40C360 100 720 0 1080 60C1260 90 1380 70 1440 50V100H0V40Z" fill="white"/>
+    </svg>
+</div>
+
+<!-- ===== SERVICES INTRO ===== -->
+<section id="services" class="services-intro container fade-up">
+    <h2>What We Do</h2>
+    <h3>Our Services</h3>
+    <p>Eco Cooling Solutions Aruba offers comprehensive HVAC services for residential and commercial properties across the island.</p>
+</section>
+
+<div class="container">
+    <div class="service-cards">
+        <div class="service-card fade-up">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085" /></svg>
+            </div>
+            <h4>AC Repair</h4>
+            <p>Fast, reliable repair services for all major AC brands. We diagnose and fix any issue to restore your comfort quickly.</p>
+            <a href="#contact" class="read-more">Learn more &gt;</a>
+        </div>
+        <div class="service-card fade-up">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>
+            </div>
+            <h4>Installation</h4>
+            <p>Professional AC installation for residential and commercial properties. We work with top brands for lasting comfort.</p>
+            <a href="#contact" class="read-more">Learn more &gt;</a>
+        </div>
+        <div class="service-card fade-up">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            </div>
+            <h4>Maintenance</h4>
+            <p>Regular maintenance plans to keep your AC running efficiently. Prevent costly breakdowns with scheduled service.</p>
+            <a href="#contact" class="read-more">Learn more &gt;</a>
+        </div>
+        <div class="service-card fade-up">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+            </div>
+            <h4>Protective Coating</h4>
+            <p>Specialized protective coatings for your AC system, extending its lifespan in Aruba's salty tropical climate.</p>
+            <a href="#contact" class="read-more">Learn more &gt;</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== BRANDS ===== -->
+<section class="brands fade-up">
+    <div class="container">
+        <div class="brands-grid">
+            <div class="brand-item" style="background: var(--primary); color: #fff;">ADINA</div>
+            <div class="brand-item">Carrier</div>
+            <div class="brand-item">Daikin</div>
+            <div class="brand-item">Midea</div>
+            <div class="brand-item">Samsung</div>
+            <div class="brand-item">LG</div>
+            <div class="brand-item">Mitsubishi</div>
+            <div class="brand-item">Gree</div>
+            <div class="brand-item">McQuay</div>
+            <div class="brand-item">Panasonic</div>
+            <div class="brand-item">Toshiba</div>
+            <div class="brand-item">Hisense</div>
+            <div class="brand-item">Comfortstar</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 4-STEP PROCESS ===== -->
+<section class="process">
+    <div class="container process-content">
+        <div class="process-top">
+            <div class="process-text fade-up">
+                <h2>Your Comfort in 4 Simple Steps</h2>
+                <p>We ensure quality and are certified service providers for multiple top brands. From initial consultation to ongoing maintenance, we've got you covered.</p>
+                <a href="#contact" class="btn-cta">Get Started</a>
+            </div>
+            <div></div>
+        </div>
+        <div class="process-steps">
+            <div class="step fade-up">
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
+                </div>
+                <h4>Consultation</h4>
+                <p>Free assessment of your cooling needs</p>
+            </div>
+            <div class="step fade-up">
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" /></svg>
+                </div>
+                <h4>Selection</h4>
+                <p>Choose the perfect system for your space</p>
+            </div>
+            <div class="step fade-up">
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085" /></svg>
+                </div>
+                <h4>Installation</h4>
+                <p>Expert installation by certified technicians</p>
+            </div>
+            <div class="step fade-up">
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182" /></svg>
+                </div>
+                <h4>Maintenance</h4>
+                <p>Ongoing care & service plans</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TRUST BADGES ===== -->
+<section class="trust fade-up">
+    <div class="container">
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-check">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                </div>
+                <p>Quality Through Reliability</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-check">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                </div>
+                <p>Fast Service by Our Experts</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-check">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                </div>
+                <p>Unique Warranty &amp; Service Plans</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="about">
+    <div class="container about-content">
+        <div class="about-text fade-up">
+            <h2>Who We Are</h2>
+            <h3>Choose Quality, Choose Eco Cooling Solutions</h3>
+            <p>At Eco Cooling Solutions Aruba, we provide year-round comfort for homes and businesses. Optimizing your indoor climate through expert installation, service, and maintenance is at the heart of what we do.</p>
+            <p>We serve both residential and commercial clients across Aruba where reliable climate control is essential for comfort, productivity, and well-being in our tropical environment.</p>
+            <p>Our team of certified technicians brings years of experience and a commitment to excellence with every project, from single-room installations to large commercial systems.</p>
+            <a href="#contact" class="btn-cta">Schedule a Consultation</a>
+        </div>
+        <div class="about-image fade-up">
+            <img src="owner.jpg.png" alt="ECS Aruba - Owner">
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects" class="projects">
+    <div class="container">
+        <div class="section-header fade-up">
+            <h2>Our Work</h2>
+            <h3>Recent Projects</h3>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card fade-up" style="grid-column: span 2; height: 340px;">
+                <img src="eco%201.jpeg" alt="Rooftop AC service">
+                <div class="overlay">
+                    <div><h4>Rooftop Unit Service</h4><p>Professional maintenance & refrigerant charging</p></div>
+                </div>
+            </div>
+            <div class="project-card fade-up">
+                <img src="eco%202.jpeg" alt="ADINA Inverter installation">
+                <div class="overlay">
+                    <div><h4>ADINA Inverter Install</h4><p>High efficiency 18 SEER outdoor unit</p></div>
+                </div>
+            </div>
+            <div class="project-card fade-up">
+                <img src="eco%203.jpeg" alt="New construction installation">
+                <div class="overlay">
+                    <div><h4>New Construction</h4><p>Piping & line set installation</p></div>
+                </div>
+            </div>
+            <div class="project-card fade-up">
+                <img src="eco%204.jpeg" alt="Indoor unit drilling">
+                <div class="overlay">
+                    <div><h4>Indoor Installation</h4><p>Wall drilling & indoor unit setup</p></div>
+                </div>
+            </div>
+            <div class="project-card fade-up">
+                <img src="eco%205.jpeg" alt="Residential outdoor unit">
+                <div class="overlay">
+                    <div><h4>Residential Install</h4><p>Gree outdoor unit with full line set</p></div>
+                </div>
+            </div>
+            <div class="project-card fade-up" style="grid-column: span 2; height: 340px;">
+                <img src="eco%206.jpeg" alt="Team rooftop ADINA install">
+                <div class="overlay">
+                    <div><h4>Team Rooftop Install</h4><p>ADINA Inverter unit — dual technician job</p></div>
+                </div>
+            </div>
+            <div class="project-card fade-up">
+                <img src="eco%207.jpeg" alt="Indoor unit maintenance">
+                <div class="overlay">
+                    <div><h4>Split Unit Maintenance</h4><p>Indoor unit service & cleaning</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SERVICES DETAIL ===== -->
+<section class="services-detail">
+    <div class="container services-detail-content">
+        <div class="services-detail-text fade-up">
+            <h2>What We Offer</h2>
+            <h3>Cooling Solutions Go Beyond Just AC</h3>
+            <p>We deliver complete climate control solutions for all types of properties across Aruba — from residential homes and vacation rentals to offices, hotels, and retail spaces.</p>
+            <p>Depending on your needs and circumstances, we create a tailored solution that perfectly fits your space and budget. This is why we are one of the leading HVAC service providers on the island.</p>
+            <a href="#contact" class="btn-cta">Contact Us</a>
+        </div>
+        <div class="services-list fade-up">
+            <div class="service-list-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>Air Conditioning Systems</span>
+            </div>
+            <div class="service-list-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>Split &amp; Multi-Split Units</span>
+            </div>
+            <div class="service-list-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>Central Air Systems</span>
+            </div>
+            <div class="service-list-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>Ventilation &amp; Air Quality</span>
+            </div>
+            <div class="service-list-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>Protective Coating Services</span>
+            </div>
+            <div class="service-list-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>Emergency Repairs</span>
+            </div>
+            <div class="service-list-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>Preventive Maintenance Plans</span>
+            </div>
+            <div class="service-list-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>Troubleshooting &amp; Diagnostics</span>
+            </div>
+            <div class="service-list-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>Dryer &amp; Extractor Hood Drilling</span>
+            </div>
+            <div class="service-list-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>Free Delivery on Select Units</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== COMMUNITY ===== -->
+<section style="padding: 60px 0; background: var(--light-bg);">
+    <div class="container" style="text-align: center;">
+        <h2 style="font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 10px; font-family: 'Montserrat', sans-serif;">Proud Aruban Business</h2>
+        <h3 style="font-size: 32px; color: var(--primary-dark); margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">More Than Cooling — We Support Our Community</h3>
+        <p style="color: var(--text-light); max-width: 700px; margin: 0 auto 30px; font-size: 15px;">At ECS Aruba, we believe in giving back. We proudly sponsor the local STITCH drift racing team at Bushiri Karting Speedway and support community events across the island. When you choose ECS, you support a company that invests in Aruba.</p>
+        <div class="community-stats" style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+            <div style="background: linear-gradient(135deg, #fff, #f0f7fa); padding: 30px 40px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,119,182,0.1); text-align: center; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); cursor: default;" onmouseover="this.style.transform='translateY(-5px) scale(1.03)';this.style.boxShadow='0 15px 40px rgba(0,119,182,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 8px 30px rgba(0,119,182,0.1)'">
+                <div data-count="1800" style="font-size: 40px; font-weight: 800; color: var(--primary); font-family: 'Montserrat', sans-serif;">0</div>
+                <div style="font-size: 14px; color: var(--text-light); margin-top: 5px; font-weight: 600;">Facebook Likes</div>
+            </div>
+            <div style="background: linear-gradient(135deg, #fff, #f0f7fa); padding: 30px 40px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,119,182,0.1); text-align: center; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); cursor: default;" onmouseover="this.style.transform='translateY(-5px) scale(1.03)';this.style.boxShadow='0 15px 40px rgba(0,119,182,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 8px 30px rgba(0,119,182,0.1)'">
+                <div data-count="2100" style="font-size: 40px; font-weight: 800; color: var(--primary); font-family: 'Montserrat', sans-serif;">0</div>
+                <div style="font-size: 14px; color: var(--text-light); margin-top: 5px; font-weight: 600;">Followers</div>
+            </div>
+            <div style="background: linear-gradient(135deg, #fff, #fff5eb); padding: 30px 40px; border-radius: 20px; box-shadow: 0 8px 30px rgba(247,127,0,0.1); text-align: center; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); cursor: default;" onmouseover="this.style.transform='translateY(-5px) scale(1.03)';this.style.boxShadow='0 15px 40px rgba(247,127,0,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 8px 30px rgba(247,127,0,0.1)'">
+                <div style="font-size: 40px; font-weight: 800; color: var(--highlight); font-family: 'Montserrat', sans-serif; animation: counter-glow 3s ease-in-out infinite;">100%</div>
+                <div style="font-size: 14px; color: var(--text-light); margin-top: 5px; font-weight: 600;">Work Guaranteed</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CALLBACK ===== -->
+<section class="callback">
+    <div class="container callback-inner">
+        <h3>Want Us to Call You Back?</h3>
+        <form class="callback-form" onsubmit="event.preventDefault(); var phone=this.querySelector('input[type=tel]').value; var opts=[]; this.querySelectorAll('input[type=checkbox]:checked').forEach(function(c){opts.push(c.parentElement.textContent.trim())}); var body='Callback Request%0A%0APhone: '+encodeURIComponent(phone)+'%0AServices: '+encodeURIComponent(opts.join(', ')||'Not specified'); window.location.href='mailto:info@ecocoolingaruba.com?subject=Callback%20Request&body='+body; alert('Thank you! Your request has been sent. We will call you back shortly.');">
+            <input type="tel" placeholder="Your phone number" required>
+            <div class="callback-options">
+                <label><input type="checkbox"> Consultation</label>
+                <label><input type="checkbox"> Quote</label>
+                <label><input type="checkbox"> Service</label>
+            </div>
+            <button type="submit" class="btn-callback">Call Me Back</button>
+        </form>
+    </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section id="contact" class="contact">
+    <div class="container contact-grid">
+        <div class="contact-info fade-up">
+            <h2>Get In Touch</h2>
+            <h3>Contact Eco Cooling Solutions</h3>
+            <p>Ready to improve your comfort? Reach out to us for a free consultation or quote. We're available for residential and commercial projects across Aruba.</p>
+
+            <div class="contact-detail">
+                <div class="ci-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+                </div>
+                <div>
+                    <h5>Address</h5>
+                    <p>Savaneta 367B, Sint Nicolaas, Aruba</p>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <div class="ci-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
+                </div>
+                <div>
+                    <h5>Phone</h5>
+                    <p>594 5773</p>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <div class="ci-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                </div>
+                <div>
+                    <h5>Email</h5>
+                    <p>info@ecocoolingaruba.com</p>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <div class="ci-icon" style="background: #e8f8ee;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </div>
+                <div>
+                    <h5>WhatsApp</h5>
+                    <p><a href="https://wa.me/2975945773" target="_blank" style="color: #25D366; font-weight: 600;">594-5773 — Chat Now</a></p>
+                </div>
+            </div>
+        </div>
+
+        <form class="contact-form fade-up" onsubmit="event.preventDefault(); var f=this; var name=f.querySelectorAll('input[type=text]')[0].value+' '+f.querySelectorAll('input[type=text]')[1].value; var email=f.querySelector('input[type=email]').value; var phone=f.querySelector('input[type=tel]').value; var service=f.querySelector('select').value; var msg=f.querySelector('textarea').value; var text='*Website Contact*%0A%0A*Name:* '+encodeURIComponent(name)+'%0A*Email:* '+encodeURIComponent(email)+'%0A*Phone:* '+encodeURIComponent(phone)+'%0A*Service:* '+encodeURIComponent(service)+'%0A%0A*Message:*%0A'+encodeURIComponent(msg); window.open('https://wa.me/2975945773?text='+text, '_blank');">
+            <div class="form-row">
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+            </div>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number">
+            <select>
+                <option value="" disabled selected>Select Service</option>
+                <option>AC Repair</option>
+                <option>New Installation</option>
+                <option>Maintenance</option>
+                <option>Protective Coating</option>
+                <option>Troubleshooting</option>
+                <option>Other</option>
+            </select>
+            <textarea placeholder="Tell us about your project or issue..."></textarea>
+            <button type="submit" class="btn-cta" style="width: 100%; text-align: center;">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<!-- ===== FOOTER BANNER ===== -->
+<div class="footer-banner">
+    <div class="container">
+        <p>Eco Cooling Solutions Aruba — One of the leading HVAC service providers in Aruba.</p>
+    </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Eco Cooling Solutions Aruba</h4>
+                <p>Complete cooling solutions for homes and businesses.<br>AC repair, installation, maintenance &amp; protective coating services across Aruba.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/ecsaruba/" target="_blank" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://wa.me/2975945773" target="_blank" aria-label="WhatsApp">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="mailto:info@ecocoolingaruba.com" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                    <a href="tel:+2975945773" aria-label="Phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </a>
+                </div>
+                <div class="footer-stars">
+                    <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">AC Repair</a></li>
+                    <li><a href="#services">Installation</a></li>
+                    <li><a href="#services">Maintenance</a></li>
+                    <li><a href="#services">Protective Coating</a></li>
+                    <li><a href="#services">Troubleshooting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#projects">Our Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p>Savaneta 367B<br>Sint Nicolaas, Aruba</p>
+                <p style="margin-top: 10px;">Phone/WhatsApp: 594-5773<br>Email: info@ecocoolingaruba.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Eco Cooling Solutions Aruba. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+<a href="https://wa.me/2975945773" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<style>
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    z-index: 999;
+    transition: all 0.3s;
+    animation: pulse-wa 2s infinite;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37,211,102,0.5); }
+@keyframes pulse-wa {
+    0% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); }
+    100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+}
+</style>
+
+<!-- ===== SCROLL ANIMATION ===== -->
+<script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Close mobile nav
+                document.getElementById('mainNav').classList.remove('active');
+            }
+        });
+    });
+
+    // Header scroll effect with shrink
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 50) {
+            header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.12)';
+            header.style.padding = '0';
+        } else {
+            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+            header.style.padding = '';
+        }
+    });
+
+    // Animated number counters
+    function animateCounter(el, target, suffix) {
+        let current = 0;
+        const increment = target / 60;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            if (target >= 1000) {
+                el.textContent = (current / 1000).toFixed(1) + 'K' + (suffix || '');
+            } else {
+                el.textContent = Math.floor(current) + (suffix || '');
+            }
+        }, 25);
+    }
+
+    // Observe community stats for counter animation
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.animated) {
+                entry.target.dataset.animated = 'true';
+                const counters = entry.target.querySelectorAll('[data-count]');
+                counters.forEach(counter => {
+                    const target = parseFloat(counter.dataset.count);
+                    const suffix = counter.dataset.suffix || '';
+                    animateCounter(counter, target, suffix);
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.community-stats').forEach(el => statsObserver.observe(el));
+
+    // Staggered animation for service cards and steps
+    const staggerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const children = entry.target.querySelectorAll('.service-card, .step, .service-list-item, .brand-item');
+                children.forEach((child, i) => {
+                    child.style.opacity = '0';
+                    child.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        child.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                        child.style.opacity = '1';
+                        child.style.transform = 'translateY(0)';
+                    }, i * 100);
+                });
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-cards, .process-steps, .services-list, .brands-grid').forEach(el => staggerObserver.observe(el));
+
+    // Parallax effect on hero blobs on mouse move
+    document.querySelector('.hero').addEventListener('mousemove', (e) => {
+        const blobs = document.querySelectorAll('.hero [style*="border-radius:50%"]');
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+        blobs.forEach((blob, i) => {
+            const speed = (i + 1) * 0.5;
+            blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Eco Cooling Solutions Aruba</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Open Sans', sans-serif; color: #333; line-height: 1.6; overflow-x: hidden; background: #fff; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        :root {
+            --primary: #0077B6; --primary-dark: #023E8A; --accent: #00B4D8; --accent-light: #90E0EF; --highlight: #F77F00;
+            --highlight-hover: #E06C00; --dark: #1B2A4A; --light-bg: #F0F7FA; --white: #ffffff; --text: #333333;
+            --text-light: #666666; --gradient-cta: linear-gradient(135deg, #023E8A, #0077B6);
+        }
+
+        /* Header */
+        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); box-shadow: 0 2px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 10px 40px; max-width: 1400px; margin: 0 auto; }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+        .logo-text h1 { font-size: 16px; font-weight: 700; color: var(--primary-dark); line-height: 1.2; }
+        .logo-text span { font-size: 10px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; }
+        .nav { display: flex; align-items: center; gap: 5px; }
+        .nav a { padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--dark); border-radius: 6px; transition: all 0.3s; }
+        .nav a:hover, .nav a.active { color: var(--primary); background: var(--light-bg); }
+        .nav-icons { display: flex; align-items: center; gap: 10px; margin-left: 10px; }
+        .nav-icon { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ddd; display: flex; align-items: center; justify-content: center; transition: all 0.3s; cursor: pointer; }
+        .nav-icon:hover { border-color: var(--primary); background: var(--light-bg); }
+        .nav-icon svg { width: 18px; height: 18px; stroke: var(--dark); }
+
+        .btn-cta { display: inline-block; padding: 12px 28px; background: var(--highlight); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-radius: 30px; border: none; cursor: pointer; transition: all 0.3s; }
+        .btn-cta:hover { background: var(--highlight-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(247,127,0,0.3); }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+        .hamburger span { width: 25px; height: 3px; background: var(--dark); border-radius: 2px; transition: all 0.3s; }
+
+        /* Page Header */
+        .page-header { padding: 60px 0; margin-top: 85px; background: linear-gradient(135deg, #023e8a 0%, #0077b6 50%, #00b4d8 100%); text-align: center; }
+        .page-header h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: #fff; font-family: 'Montserrat', sans-serif; }
+        .page-header p { color: rgba(255,255,255,0.8); margin-top: 10px; font-size: 16px; }
+
+        /* About Section */
+        .about { position: relative; padding: 100px 0; background: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&q=80') center/cover no-repeat; }
+        .about::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.4) 100%); }
+        .about-content { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-text h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 10px; }
+        .about-text h3 { font-size: 32px; color: var(--primary-dark); margin-bottom: 20px; background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .about-text p { color: var(--text-light); margin-bottom: 15px; font-size: 15px; }
+        .about-text .btn-cta { margin-top: 15px; animation: gradient-shift 4s ease infinite; background-size: 200% 200% !important; box-shadow: 0 4px 15px rgba(247,127,0,0.3); }
+        .about-image { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+        .about-image img { width: 100%; height: 400px; object-fit: cover; }
+
+        /* Community Section */
+        .community-section { padding: 60px 0; background: var(--light-bg); text-align: center; }
+        .community-section h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 10px; }
+        .community-section h3 { font-size: 32px; color: var(--primary-dark); margin-bottom: 15px; background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .community-section p { color: var(--text-light); max-width: 700px; margin: 0 auto 30px; font-size: 15px; }
+        .community-stats { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
+        .stat-card { background: linear-gradient(135deg, #fff, #f0f7fa); padding: 30px 40px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,119,182,0.1); text-align: center; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); cursor: default; }
+        .stat-card:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 15px 40px rgba(0,119,182,0.18); }
+        .stat-number { font-size: 40px; font-weight: 800; color: var(--primary); font-family: 'Montserrat', sans-serif; }
+        .stat-label { font-size: 14px; color: var(--text-light); margin-top: 5px; font-weight: 600; }
+        .stat-card.highlight .stat-number { color: var(--highlight); animation: counter-glow 3s ease-in-out infinite; }
+        .stat-card.highlight { background: linear-gradient(135deg, #fff, #fff5eb); box-shadow: 0 8px 30px rgba(247,127,0,0.1); }
+
+        /* Footer */
+        .footer-banner { background: var(--gradient-cta); padding: 25px 0; text-align: center; }
+        .footer-banner p { color: rgba(255,255,255,0.85); font-size: 14px; }
+        .footer { background: var(--dark); padding: 60px 0 30px; color: rgba(255,255,255,0.7); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: #fff; font-size: 16px; margin-bottom: 20px; }
+        .footer-col p { font-size: 14px; line-height: 1.8; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.3s; }
+        .footer-col ul li a:hover { color: var(--accent); }
+        .footer-social { display: flex; gap: 12px; margin-top: 20px; }
+        .footer-social a { width: 40px; height: 40px; background: rgba(255,255,255,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .footer-social a:hover { background: var(--primary); }
+        .footer-social a svg { width: 18px; height: 18px; fill: #fff; }
+        .footer-stars { margin-top: 15px; }
+        .footer-stars span { color: var(--highlight); font-size: 20px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; text-align: center; font-size: 13px; }
+
+        /* Animations */
+        @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes counter-glow { 0%, 100% { text-shadow: 0 0 10px rgba(247, 127, 0, 0.3); } 50% { text-shadow: 0 0 25px rgba(247, 127, 0, 0.6), 0 0 50px rgba(247, 127, 0, 0.2); } }
+        .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        .header { background: rgba(255,255,255,0.85) !important; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,119,182,0.08); }
+        .logo-icon { transition: all 0.4s ease !important; }
+        .logo:hover .logo-icon { transform: rotate(5deg) scale(1.08); filter: drop-shadow(0 4px 8px rgba(0,119,182,0.2)); }
+        .nav-icon { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important; }
+        .nav-icon:hover { transform: translateY(-3px) scale(1.1); box-shadow: 0 5px 15px rgba(0,119,182,0.2); }
+        .footer-social a { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important; }
+        .footer-social a:hover { background: linear-gradient(135deg, var(--primary), var(--accent)) !important; transform: translateY(-4px) rotate(5deg); box-shadow: 0 8px 20px rgba(0,119,182,0.3); }
+
+        @media (max-width: 768px) {
+            .header-inner { padding: 10px 20px; }
+            .nav { display: none; }
+            .hamburger { display: flex; }
+            .nav.active { display: flex; flex-direction: column; position: absolute; top: 85px; left: 0; right: 0; background: #fff; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+            .nav-icons { display: none; }
+            .about-content { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .community-stats { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><img src="ecs-logo.png" alt="ECS Logo"></div>
+            <div class="logo-text">
+                <h1>Eco Cooling Solutions</h1>
+                <span>Aruba's #1 Airco Service</span>
+            </div>
+        </a>
+        <nav class="nav" id="mainNav">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html" class="active">About Us</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-icons">
+            <a href="tel:+2975945773" class="nav-icon" title="Call Us">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
+            </a>
+            <a href="https://wa.me/2975945773" class="nav-icon" title="WhatsApp Us" target="_blank" style="border-color: #25D366;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+            <a href="mailto:info@ecocoolingaruba.com" class="nav-icon" title="Email Us">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+            </a>
+            <a href="contact.html" class="btn-cta" style="margin-left: 5px;">Request Quote</a>
+        </div>
+        <div class="hamburger" onclick="document.getElementById('mainNav').classList.toggle('active')">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</header>
+
+<!-- Page Header -->
+<section class="page-header">
+    <h2>About Us</h2>
+    <p>Learn about our commitment to excellence</p>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about">
+    <div class="container about-content">
+        <div class="about-text fade-up">
+            <h2>Who We Are</h2>
+            <h3>Choose Quality, Choose Eco Cooling Solutions</h3>
+            <p>At Eco Cooling Solutions Aruba, we provide year-round comfort for homes and businesses. Optimizing your indoor climate through expert installation, service, and maintenance is at the heart of what we do.</p>
+            <p>We serve both residential and commercial clients across Aruba where reliable climate control is essential for comfort, productivity, and well-being in our tropical environment.</p>
+            <p>Our team of certified technicians brings years of experience and a commitment to excellence with every project, from single-room installations to large commercial systems.</p>
+            <a href="contact.html" class="btn-cta">Schedule a Consultation</a>
+        </div>
+        <div class="about-image fade-up">
+            <img src="owner.jpg.png" alt="ECS Aruba - Owner">
+        </div>
+    </div>
+</section>
+
+<!-- Community Section -->
+<section class="community-section">
+    <div class="container">
+        <h2>Proud Aruban Business</h2>
+        <h3>More Than Cooling — We Support Our Community</h3>
+        <p>At ECS Aruba, we believe in giving back. We proudly sponsor the local STITCH drift racing team at Bushiri Karting Speedway and support community events across the island. When you choose ECS, you support a company that invests in Aruba.</p>
+        <div class="community-stats">
+            <div class="stat-card fade-up">
+                <div class="stat-number" data-count="1800">0</div>
+                <div class="stat-label">Facebook Likes</div>
+            </div>
+            <div class="stat-card fade-up">
+                <div class="stat-number" data-count="2100">0</div>
+                <div class="stat-label">Followers</div>
+            </div>
+            <div class="stat-card highlight fade-up">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Work Guaranteed</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Banner -->
+<div class="footer-banner">
+    <div class="container">
+        <p>Eco Cooling Solutions Aruba — One of the leading HVAC service providers in Aruba.</p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Eco Cooling Solutions Aruba</h4>
+                <p>Complete cooling solutions for homes and businesses.<br>AC repair, installation, maintenance &amp; protective coating services across Aruba.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/ecsaruba/" target="_blank" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://wa.me/2975945773" target="_blank" aria-label="WhatsApp">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="mailto:info@ecocoolingaruba.com" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                    <a href="tel:+2975945773" aria-label="Phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </a>
+                </div>
+                <div class="footer-stars"><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html">AC Repair</a></li>
+                    <li><a href="services.html">Installation</a></li>
+                    <li><a href="services.html">Maintenance</a></li>
+                    <li><a href="services.html">Protective Coating</a></li>
+                    <li><a href="services.html">Troubleshooting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="projects.html">Our Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p>Savaneta 367B<br>Sint Nicolaas, Aruba</p>
+                <p style="margin-top: 10px;">Phone/WhatsApp: 594-5773<br>Email: info@ecocoolingaruba.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Eco Cooling Solutions Aruba. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/2975945773" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<style>
+.whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999; transition: all 0.3s; animation: pulse-wa 2s infinite; }
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37,211,102,0.5); }
+@keyframes pulse-wa { 0% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); } 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } }
+</style>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.getElementById('mainNav').classList.remove('active');
+            }
+        });
+    });
+
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 50) {
+            header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.12)';
+            header.style.padding = '0';
+        } else {
+            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+            header.style.padding = '';
+        }
+    });
+
+    // Counter animation
+    function animateCounter(el, target, suffix) {
+        let current = 0;
+        const increment = target / 60;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            if (target >= 1000) {
+                el.textContent = (current / 1000).toFixed(1) + 'K' + (suffix || '');
+            } else {
+                el.textContent = Math.floor(current) + (suffix || '');
+            }
+        }, 25);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.animated) {
+                entry.target.dataset.animated = 'true';
+                const counters = entry.target.querySelectorAll('[data-count]');
+                counters.forEach(counter => {
+                    const target = parseFloat(counter.dataset.count);
+                    const suffix = counter.dataset.suffix || '';
+                    animateCounter(counter, target, suffix);
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.community-stats').forEach(el => statsObserver.observe(el));
+
+    document.querySelectorAll('.nav a').forEach(link => {
+        if (link.getAttribute('href') === 'about.html') {
+            link.classList.add('active');
+        }
+    });
+</script>
+
+</body>
+</html>
