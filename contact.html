@@ -4,274 +4,948 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Eco Cooling Solutions Aruba</title>
+    <meta name="description" content="Contact Eco Cooling Solutions Aruba. Get a free quote for AC repair, installation, maintenance, and protective coating. We respond within 24 hours.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shared.css">
     <style>
-        /* ===== RESET & BASE ===== */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Open Sans', sans-serif; color: #333; line-height: 1.6; overflow-x: hidden; background: #fff; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
-        a { text-decoration: none; color: inherit; }
-        img { max-width: 100%; display: block; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        /* ============================================================
+           PAGE-SPECIFIC STYLES — contact.html
+        ============================================================ */
 
-        :root {
-            --primary: #0077B6; --primary-dark: #023E8A; --accent: #00B4D8; --accent-light: #90E0EF; --highlight: #F77F00;
-            --highlight-hover: #E06C00; --dark: #1B2A4A; --light-bg: #F0F7FA; --white: #ffffff; --text: #333333;
-            --text-light: #666666; --gradient-cta: linear-gradient(135deg, #023E8A, #0077B6);
+        /* ---- Contact Section ---- */
+        .contact-section {
+            padding: var(--s9) 0;
+            background: var(--surface);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: var(--s7);
+            align-items: start;
         }
 
-        /* Header */
-        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); box-shadow: 0 2px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; }
-        .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 10px 40px; max-width: 1400px; margin: 0 auto; }
-        .logo { display: flex; align-items: center; gap: 12px; }
-        .logo-icon { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
-        .logo-text h1 { font-size: 16px; font-weight: 700; color: var(--primary-dark); line-height: 1.2; }
-        .logo-text span { font-size: 10px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; }
-        .nav { display: flex; align-items: center; gap: 5px; }
-        .nav a { padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--dark); border-radius: 6px; transition: all 0.3s; }
-        .nav a:hover, .nav a.active { color: var(--primary); background: var(--light-bg); }
-        .nav-icons { display: flex; align-items: center; gap: 10px; margin-left: 10px; }
-        .nav-icon { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ddd; display: flex; align-items: center; justify-content: center; transition: all 0.3s; cursor: pointer; }
-        .nav-icon:hover { border-color: var(--primary); background: var(--light-bg); }
-        .nav-icon svg { width: 18px; height: 18px; stroke: var(--dark); }
-        .btn-cta { display: inline-block; padding: 12px 28px; background: var(--highlight); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-radius: 30px; border: none; cursor: pointer; transition: all 0.3s; }
-        .btn-cta:hover { background: var(--highlight-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(247,127,0,0.3); }
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
-        .hamburger span { width: 25px; height: 3px; background: var(--dark); border-radius: 2px; transition: all 0.3s; }
+        /* Left panel */
+        .contact-info-panel {
+            padding: var(--s7) var(--s6);
+            background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 70%, var(--accent) 130%);
+            border-radius: var(--r-xl);
+            color: var(--white);
+            position: sticky;
+            top: 100px;
+        }
+        .contact-info-panel .section-label {
+            color: var(--accent-light);
+        }
+        .contact-info-panel h2 {
+            font-size: clamp(22px, 2.5vw, 30px);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: var(--s4);
+        }
+        .contact-info-panel .panel-desc {
+            font-size: 15px;
+            color: rgba(255,255,255,.75);
+            line-height: 1.7;
+            margin-bottom: var(--s6);
+        }
 
-        /* Page Header */
-        .page-header { padding: 60px 0; margin-top: 85px; background: linear-gradient(135deg, #023e8a 0%, #0077b6 50%, #00b4d8 100%); text-align: center; }
-        .page-header h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: #fff; font-family: 'Montserrat', sans-serif; }
-        .page-header p { color: rgba(255,255,255,0.8); margin-top: 10px; font-size: 16px; }
+        .contact-detail-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--s4);
+            margin-bottom: var(--s6);
+            list-style: none;
+        }
+        .contact-detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--s4);
+        }
+        .contact-detail-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: var(--r-md);
+            background: rgba(255,255,255,.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background var(--t-fast);
+        }
+        .contact-detail-item:hover .contact-detail-icon {
+            background: rgba(255,255,255,.25);
+        }
+        .contact-detail-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--white);
+            fill: none;
+        }
+        .contact-detail-icon svg.filled {
+            fill: var(--white);
+            stroke: none;
+        }
+        .contact-detail-body {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .contact-detail-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.55);
+        }
+        .contact-detail-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--white);
+        }
+        .contact-detail-value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color var(--t-fast);
+        }
+        .contact-detail-value a:hover {
+            color: var(--accent-light);
+        }
 
-        /* Callback Section */
-        .callback { background: var(--gradient-cta); padding: 60px 0; }
-        .callback-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
-        .callback h3 { font-size: 28px; color: #fff; max-width: 400px; }
-        .callback-form { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
-        .callback-form input[type="tel"] { padding: 14px 24px; border: 2px solid rgba(255,255,255,0.3); border-radius: 30px; background: rgba(255,255,255,0.12); color: #fff; font-size: 15px; font-family: 'Open Sans', sans-serif; min-width: 220px; outline: none; transition: all 0.3s; }
-        .callback-form input[type="tel"]::placeholder { color: rgba(255,255,255,0.6); }
-        .callback-form input[type="tel"]:focus { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.2); }
-        .callback-options { display: flex; gap: 15px; color: #fff; font-size: 14px; }
-        .callback-options label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
-        .callback-options input[type="checkbox"] { accent-color: var(--highlight); }
-        .btn-callback { padding: 14px 32px; background: var(--highlight); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-radius: 30px; border: none; cursor: pointer; transition: all 0.3s; }
-        .btn-callback:hover { background: var(--highlight-hover); transform: translateY(-2px); }
+        .quick-actions {
+            display: flex;
+            gap: var(--s3);
+            flex-wrap: wrap;
+        }
+        .quick-actions .btn {
+            flex: 1;
+            min-width: 120px;
+            justify-content: center;
+        }
 
-        /* Contact Section */
-        .contact { padding: 80px 0; background: #fff; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-        .contact-info h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 10px; }
-        .contact-info h3 { font-size: 32px; color: var(--primary-dark); margin-bottom: 20px; background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .contact-info p { color: var(--text-light); margin-bottom: 25px; }
-        .contact-detail { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .contact-detail .ci-icon { width: 45px; height: 45px; min-width: 45px; background: var(--light-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
-        .contact-detail .ci-icon svg { width: 20px; height: 20px; stroke: var(--primary); }
-        .contact-detail div h5 { font-size: 14px; color: var(--dark); margin-bottom: 2px; }
-        .contact-detail div p { font-size: 14px; color: var(--text-light); margin: 0; }
-        .contact-form { display: grid; gap: 15px; }
-        .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .contact-form input, .contact-form textarea, .contact-form select { padding: 14px 18px; border: 2px solid #e8e8e8; border-radius: 10px; font-size: 14px; font-family: 'Open Sans', sans-serif; transition: all 0.3s; outline: none; background: #fafafa; }
-        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 15px rgba(0,180,216,0.15), 0 0 5px rgba(0,180,216,0.1); }
-        .contact-form textarea { resize: vertical; min-height: 120px; }
+        /* Right panel — Form card */
+        .contact-form-card {
+            background: var(--white);
+            border-radius: var(--r-xl);
+            box-shadow: var(--shadow-xl);
+            padding: var(--s7);
+        }
+        .contact-form-card h3 {
+            font-size: clamp(20px, 2.2vw, 26px);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: var(--s2);
+        }
+        .form-card-sub {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: var(--s6);
+        }
 
-        /* Footer */
-        .footer-banner { background: var(--gradient-cta); padding: 25px 0; text-align: center; }
-        .footer-banner p { color: rgba(255,255,255,0.85); font-size: 14px; }
-        .footer { background: var(--dark); padding: 60px 0 30px; color: rgba(255,255,255,0.7); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-        .footer-col h4 { color: #fff; font-size: 16px; margin-bottom: 20px; }
-        .footer-col p { font-size: 14px; line-height: 1.8; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.3s; }
-        .footer-col ul li a:hover { color: var(--accent); }
-        .footer-social { display: flex; gap: 12px; margin-top: 20px; }
-        .footer-social a { width: 40px; height: 40px; background: rgba(255,255,255,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
-        .footer-social a:hover { background: var(--primary); }
-        .footer-social a svg { width: 18px; height: 18px; fill: #fff; }
-        .footer-stars { margin-top: 15px; }
-        .footer-stars span { color: var(--highlight); font-size: 20px; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; text-align: center; font-size: 13px; }
+        /* Form styles */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--s4);
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--s2);
+            margin-bottom: var(--s5);
+        }
+        .form-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            font-family: var(--font-head);
+        }
+        .form-label .required {
+            color: #E53E3E;
+            margin-left: 2px;
+        }
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            height: 48px;
+            padding: 0 var(--s4);
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--text);
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            transition: border-color var(--t-fast), box-shadow var(--t-fast);
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0,119,182,.12);
+        }
+        .form-input.error,
+        .form-select.error,
+        .form-textarea.error {
+            border-color: #E53E3E;
+            box-shadow: 0 0 0 3px rgba(229,62,62,.1);
+        }
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--text-light);
+            opacity: .7;
+        }
+        .form-select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7E94' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+        .form-textarea {
+            height: auto;
+            padding: var(--s3) var(--s4);
+            resize: vertical;
+            min-height: 120px;
+        }
+        .field-error {
+            font-size: 12px;
+            font-weight: 500;
+            color: #E53E3E;
+            display: none;
+            align-items: center;
+            gap: 4px;
+        }
+        .field-error.visible {
+            display: flex;
+        }
+        .field-error svg {
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+        }
 
-        /* Animations */
-        .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .btn-submit {
+            width: 100%;
+            height: 52px;
+            font-size: 15px;
+            border-radius: 10px;
+            justify-content: center;
+        }
+        .btn-submit .spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,.4);
+            border-top-color: var(--white);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        .btn-submit.loading .btn-label { display: none; }
+        .btn-submit.loading .spinner { display: block; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        .header { background: rgba(255,255,255,0.85) !important; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,119,182,0.08); }
-        .logo-icon { transition: all 0.4s ease !important; }
-        .logo:hover .logo-icon { transform: rotate(5deg) scale(1.08); filter: drop-shadow(0 4px 8px rgba(0,119,182,0.2)); }
-        .nav-icon { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important; }
-        .nav-icon:hover { transform: translateY(-3px) scale(1.1); box-shadow: 0 5px 15px rgba(0,119,182,0.2); }
-        .footer-social a { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important; }
-        .footer-social a:hover { background: linear-gradient(135deg, var(--primary), var(--accent)) !important; transform: translateY(-4px) rotate(5deg); box-shadow: 0 8px 20px rgba(0,119,182,0.3); }
-        .btn-cta, .btn-callback { background: linear-gradient(135deg, #F77F00, #FF9E40, #F77F00) !important; background-size: 200% 200% !important; animation: gradient-shift 4s ease infinite; box-shadow: 0 4px 15px rgba(247,127,0,0.3); }
-        .btn-cta:hover, .btn-callback:hover { box-shadow: 0 8px 30px rgba(247,127,0,0.45), 0 0 20px rgba(247,127,0,0.2) !important; transform: translateY(-3px) scale(1.02) !important; }
-        @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        /* Success message */
+        .form-success {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: var(--s7) var(--s6);
+            gap: var(--s4);
+        }
+        .form-success.visible {
+            display: flex;
+        }
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(34,197,94,.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .success-icon svg {
+            width: 36px;
+            height: 36px;
+            stroke: var(--success);
+            fill: none;
+        }
+        .form-success h4 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--dark);
+        }
+        .form-success p {
+            font-size: 15px;
+            color: var(--text-light);
+            max-width: 320px;
+        }
 
-        @media (max-width: 768px) {
-            .header-inner { padding: 10px 20px; }
-            .nav { display: none; }
-            .hamburger { display: flex; }
-            .nav.active { display: flex; flex-direction: column; position: absolute; top: 85px; left: 0; right: 0; background: #fff; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-            .nav-icons { display: none; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .contact-form .form-row { grid-template-columns: 1fr; }
-            .callback-inner { flex-direction: column; text-align: center; }
-            .callback h3 { max-width: 100%; }
-            .footer-grid { grid-template-columns: 1fr; }
+        /* ---- Map Section ---- */
+        .map-section {
+            padding: var(--s8) 0;
+            background: var(--white);
+        }
+        .map-wrapper {
+            border-radius: var(--r-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 400px;
+            display: block;
+            border: none;
+        }
+        .map-note {
+            display: flex;
+            align-items: center;
+            gap: var(--s3);
+            margin-top: var(--s4);
+            padding: var(--s4) var(--s5);
+            background: var(--surface);
+            border-radius: var(--r-md);
+            border: 1px solid var(--border);
+        }
+        .map-note svg {
+            width: 18px;
+            height: 18px;
+            color: var(--primary);
+            flex-shrink: 0;
+            stroke: var(--primary);
+            fill: none;
+        }
+        .map-note span {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-mid);
+        }
+
+        /* ---- FAQ Section ---- */
+        .faq-section {
+            padding: var(--s9) 0;
+            background: var(--surface);
+        }
+        .faq-list {
+            max-width: 780px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--s3);
+            list-style: none;
+        }
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--r-md);
+            border: 1.5px solid var(--border);
+            overflow: hidden;
+            transition: box-shadow var(--t-base), border-color var(--t-base);
+        }
+        .faq-item.open {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+        .faq-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--s4);
+            padding: var(--s5);
+            text-align: left;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: var(--font-head);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark);
+            transition: color var(--t-fast);
+            min-height: 64px;
+        }
+        .faq-trigger:hover {
+            color: var(--primary);
+        }
+        .faq-item.open .faq-trigger {
+            color: var(--primary);
+        }
+        .faq-chevron {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background var(--t-fast), transform var(--t-base) var(--ease-out);
+        }
+        .faq-item.open .faq-chevron {
+            background: var(--primary);
+            transform: rotate(180deg);
+        }
+        .faq-chevron svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--text-mid);
+            fill: none;
+            transition: stroke var(--t-fast);
+        }
+        .faq-item.open .faq-chevron svg {
+            stroke: var(--white);
+        }
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s var(--ease-out);
+        }
+        .faq-body-inner {
+            padding: 0 var(--s5) var(--s5);
+            font-size: 15px;
+            color: var(--text-mid);
+            line-height: 1.75;
+        }
+
+        /* ---- CTA Band buttons ---- */
+        .btn-outline-white {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,.6);
+            border-radius: var(--r-full);
+            padding: 14px 28px;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--s2);
+            min-height: 48px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all var(--t-base);
+            letter-spacing: .3px;
+            white-space: nowrap;
+        }
+        .btn-outline-white:hover {
+            background: rgba(255,255,255,.15);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-info-panel {
+                position: static;
+            }
+        }
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .contact-form-card {
+                padding: var(--s5);
+            }
+            .contact-info-panel {
+                padding: var(--s5);
+            }
+            .quick-actions .btn {
+                font-size: 13px;
+                padding: 12px 16px;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- Header -->
-<header class="header">
-    <div class="header-inner">
-        <a href="index.html" class="logo">
-            <div class="logo-icon"><img src="ecs-logo.png" alt="ECS Logo"></div>
-            <div class="logo-text">
-                <h1>Eco Cooling Solutions</h1>
-                <span>Aruba's #1 Airco Service</span>
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header class="header" id="header">
+    <div class="container">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="Eco Cooling Solutions Aruba home">
+                <div class="logo-img">
+                    <img src="ecs-logo.png" alt="Eco Cooling Solutions logo">
+                </div>
+                <div>
+                    <span class="logo-name">Eco Cooling Solutions</span>
+                    <span class="logo-tag">Aruba</span>
+                </div>
+            </a>
+
+            <nav class="nav" aria-label="Primary navigation">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="tel:+2975945773" class="icon-btn" aria-label="Call us">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.8 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.7 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.69a16 16 0 006.29 6.29l1.05-1.05a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/2975945773" target="_blank" rel="noopener" class="icon-btn wa" aria-label="WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                </a>
+                <a href="contact.html" class="btn btn-primary">Request Quote</a>
             </div>
-        </a>
-        <nav class="nav" id="mainNav">
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="about.html">About Us</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html" class="active">Contact</a>
-        </nav>
-        <div class="nav-icons">
-            <a href="tel:+2975945773" class="nav-icon" title="Call Us">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
-            </a>
-            <a href="https://wa.me/2975945773" class="nav-icon" title="WhatsApp Us" target="_blank" style="border-color: #25D366;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </a>
-            <a href="mailto:info@ecocoolingaruba.com" class="nav-icon" title="Email Us">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-            </a>
-            <a href="contact.html" class="btn-cta" style="margin-left: 5px;">Request Quote</a>
-        </div>
-        <div class="hamburger" onclick="document.getElementById('mainNav').classList.toggle('active')">
-            <span></span><span></span><span></span>
+
+            <button class="hamburger" id="hamburger" aria-label="Open mobile menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </div>
 </header>
 
-<!-- Page Header -->
-<section class="page-header">
-    <h2>Contact Us</h2>
-    <p>Get in touch with our expert team</p>
-</section>
-
-<!-- Callback Section -->
-<section class="callback">
-    <div class="container callback-inner">
-        <h3>Want Us to Call You Back?</h3>
-        <form class="callback-form" onsubmit="event.preventDefault(); var phone=this.querySelector('input[type=tel]').value; var opts=[]; this.querySelectorAll('input[type=checkbox]:checked').forEach(function(c){opts.push(c.parentElement.textContent.trim())}); var body='Callback Request%0A%0APhone: '+encodeURIComponent(phone)+'%0AServices: '+encodeURIComponent(opts.join(', ')||'Not specified'); window.location.href='mailto:info@ecocoolingaruba.com?subject=Callback%20Request&body='+body; alert('Thank you! Your request has been sent. We will call you back shortly.');">
-            <input type="tel" placeholder="Your phone number" required>
-            <div class="callback-options">
-                <label><input type="checkbox"> Consultation</label>
-                <label><input type="checkbox"> Quote</label>
-                <label><input type="checkbox"> Service</label>
-            </div>
-            <button type="submit" class="btn-callback">Call Me Back</button>
-        </form>
-    </div>
-</section>
-
-<!-- Contact Form Section -->
-<section id="contact" class="contact">
-    <div class="container contact-grid">
-        <div class="contact-info fade-up">
-            <h2>Get In Touch</h2>
-            <h3>Contact Eco Cooling Solutions</h3>
-            <p>Ready to improve your comfort? Reach out to us for a free consultation or quote. We're available for residential and commercial projects across Aruba.</p>
-
-            <div class="contact-detail">
-                <div class="ci-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
-                </div>
-                <div>
-                    <h5>Address</h5>
-                    <p>Savaneta 367B, Sint Nicolaas, Aruba</p>
-                </div>
-            </div>
-            <div class="contact-detail">
-                <div class="ci-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
-                </div>
-                <div>
-                    <h5>Phone</h5>
-                    <p>594 5773</p>
-                </div>
-            </div>
-            <div class="contact-detail">
-                <div class="ci-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                </div>
-                <div>
-                    <h5>Email</h5>
-                    <p>info@ecocoolingaruba.com</p>
-                </div>
-            </div>
-            <div class="contact-detail">
-                <div class="ci-icon" style="background: #e8f8ee;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                </div>
-                <div>
-                    <h5>WhatsApp</h5>
-                    <p><a href="https://wa.me/2975945773" target="_blank" style="color: #25D366; font-weight: 600;">594-5773 — Chat Now</a></p>
-                </div>
-            </div>
-        </div>
-
-        <form class="contact-form fade-up" onsubmit="event.preventDefault(); var f=this; var name=f.querySelectorAll('input[type=text]')[0].value+' '+f.querySelectorAll('input[type=text]')[1].value; var email=f.querySelector('input[type=email]').value; var phone=f.querySelector('input[type=tel]').value; var service=f.querySelector('select').value; var msg=f.querySelector('textarea').value; var text='*Website Contact*%0A%0A*Name:* '+encodeURIComponent(name)+'%0A*Email:* '+encodeURIComponent(email)+'%0A*Phone:* '+encodeURIComponent(phone)+'%0A*Service:* '+encodeURIComponent(service)+'%0A%0A*Message:*%0A'+encodeURIComponent(msg); window.open('https://wa.me/2975945773?text='+text, '_blank');">
-            <div class="form-row">
-                <input type="text" placeholder="First Name" required>
-                <input type="text" placeholder="Last Name" required>
-            </div>
-            <input type="email" placeholder="Email Address" required>
-            <input type="tel" placeholder="Phone Number">
-            <select>
-                <option value="" disabled selected>Select Service</option>
-                <option>AC Repair</option>
-                <option>New Installation</option>
-                <option>Maintenance</option>
-                <option>Protective Coating</option>
-                <option>Troubleshooting</option>
-                <option>Other</option>
-            </select>
-            <textarea placeholder="Tell us about your project or issue..."></textarea>
-            <button type="submit" class="btn-cta" style="width: 100%; text-align: center;">Send Message</button>
-        </form>
-    </div>
-</section>
-
-<!-- Footer Banner -->
-<div class="footer-banner">
-    <div class="container">
-        <p>Eco Cooling Solutions Aruba — One of the leading HVAC service providers in Aruba.</p>
-    </div>
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation" aria-modal="true">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="contact.html" class="btn btn-primary">Request Quote</a>
 </div>
 
-<!-- Footer -->
+
+<!-- ============================================================
+     PAGE BANNER
+============================================================ -->
+<section class="page-banner" aria-label="Page header">
+    <div class="container">
+        <span class="section-label">Get In Touch</span>
+        <h1>Contact Us</h1>
+        <p>Get your free quote today &mdash; we'll respond within 24 hours.</p>
+    </div>
+    <div class="page-banner-wave">
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#F0F7FA"/>
+        </svg>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT SECTION
+============================================================ -->
+<section class="contact-section" id="contact" aria-label="Contact information and quote form">
+    <div class="container">
+        <div class="contact-grid reveal">
+
+            <!-- LEFT: Contact Info Panel -->
+            <div class="contact-info-panel">
+                <span class="section-label">Get In Touch</span>
+                <h2>We're Here to Help</h2>
+                <p class="panel-desc">
+                    Have a question or need a quote? Our team responds fast &mdash; usually within a few hours. Reach out by phone, WhatsApp, email, or fill out the form.
+                </p>
+
+                <ul class="contact-detail-list" aria-label="Contact details">
+                    <li class="contact-detail-item">
+                        <div class="contact-detail-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.8 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.7 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.69a16 16 0 006.29 6.29l1.05-1.05a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-detail-body">
+                            <span class="contact-detail-label">Phone</span>
+                            <span class="contact-detail-value"><a href="tel:+2975945773">594-5773</a></span>
+                        </div>
+                    </li>
+                    <li class="contact-detail-item">
+                        <div class="contact-detail-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" stroke="none" class="filled">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-detail-body">
+                            <span class="contact-detail-label">WhatsApp</span>
+                            <span class="contact-detail-value"><a href="https://wa.me/2975945773" target="_blank" rel="noopener">+297 594-5773</a></span>
+                        </div>
+                    </li>
+                    <li class="contact-detail-item">
+                        <div class="contact-detail-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <div class="contact-detail-body">
+                            <span class="contact-detail-label">Email</span>
+                            <span class="contact-detail-value"><a href="mailto:info@ecocoolingaruba.com">info@ecocoolingaruba.com</a></span>
+                        </div>
+                    </li>
+                    <li class="contact-detail-item">
+                        <div class="contact-detail-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="contact-detail-body">
+                            <span class="contact-detail-label">Address</span>
+                            <span class="contact-detail-value">Savaneta 367B, Sint Nicolaas, Aruba</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="quick-actions">
+                    <a href="tel:+2975945773" class="btn btn-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.8 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.7 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.69a16 16 0 006.29 6.29l1.05-1.05a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                        Call Now
+                    </a>
+                    <a href="https://wa.me/2975945773" target="_blank" rel="noopener" class="btn btn-wa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGHT: Contact Form Card -->
+            <div class="contact-form-card">
+                <h3>Request a Free Quote</h3>
+                <p class="form-card-sub">Fill in your details and we'll get back to you within 24 hours.</p>
+
+                <!-- Success State (hidden initially) -->
+                <div class="form-success" id="formSuccess" role="alert" aria-live="polite" tabindex="-1">
+                    <div class="success-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <h4>Request Sent!</h4>
+                    <p>Thanks for reaching out. We'll review your request and respond within 24 hours.</p>
+                    <button class="btn btn-blue" id="formResetBtn" type="button" style="border-radius:10px;">Send Another Request</button>
+                </div>
+
+                <!-- Contact Form -->
+                <form id="contactForm" novalidate aria-label="Quote request form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="inputName">
+                                Full Name <span class="required" aria-hidden="true">*</span>
+                            </label>
+                            <input
+                                class="form-input"
+                                type="text"
+                                id="inputName"
+                                name="name"
+                                autocomplete="name"
+                                placeholder="Your full name"
+                                required
+                                aria-required="true"
+                                aria-describedby="errorName"
+                            >
+                            <span class="field-error" id="errorName" role="alert">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                Please enter your full name.
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="inputPhone">
+                                Phone Number <span class="required" aria-hidden="true">*</span>
+                            </label>
+                            <input
+                                class="form-input"
+                                type="tel"
+                                id="inputPhone"
+                                name="phone"
+                                autocomplete="tel"
+                                placeholder="+297 000-0000"
+                                required
+                                aria-required="true"
+                                aria-describedby="errorPhone"
+                            >
+                            <span class="field-error" id="errorPhone" role="alert">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                Please enter your phone number.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="inputEmail">
+                            Email Address <span class="required" aria-hidden="true">*</span>
+                        </label>
+                        <input
+                            class="form-input"
+                            type="email"
+                            id="inputEmail"
+                            name="email"
+                            autocomplete="email"
+                            placeholder="you@example.com"
+                            required
+                            aria-required="true"
+                            aria-describedby="errorEmail"
+                        >
+                        <span class="field-error" id="errorEmail" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            Please enter a valid email address.
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="inputService">
+                            Service Needed <span class="required" aria-hidden="true">*</span>
+                        </label>
+                        <select
+                            class="form-select"
+                            id="inputService"
+                            name="service"
+                            required
+                            aria-required="true"
+                            aria-describedby="errorService"
+                        >
+                            <option value="" disabled selected>Select a service...</option>
+                            <option value="repair">AC Repair</option>
+                            <option value="installation">AC Installation</option>
+                            <option value="maintenance">Maintenance / Service</option>
+                            <option value="coating">Protective Coating</option>
+                            <option value="other">Other / Not Sure</option>
+                        </select>
+                        <span class="field-error" id="errorService" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            Please select a service.
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="inputMessage">
+                            Message <span style="color:var(--text-light); font-weight:400; font-family:var(--font-body);">(optional)</span>
+                        </label>
+                        <textarea
+                            class="form-textarea"
+                            id="inputMessage"
+                            name="message"
+                            rows="5"
+                            placeholder="Describe your issue or any additional details..."
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+                        <span class="btn-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:6px;vertical-align:middle;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            Send Request
+                        </span>
+                        <span class="spinner" aria-hidden="true"></span>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     MAP SECTION
+============================================================ -->
+<section class="map-section" aria-label="Our location">
+    <div class="container">
+        <div class="section-header centered reveal">
+            <span class="section-label">Find Us</span>
+            <h2 class="section-title">Our Location</h2>
+        </div>
+        <div class="map-wrapper reveal">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3779.0!2d-69.928!3d12.452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8583b0d3c4e0f1%3A0x1!2sSavaneta+367B%2C+Sint+Nicolaas%2C+Aruba!5e0!3m2!1sen!2saw!4v1700000000000!5m2!1sen!2saw"
+                width="100%"
+                height="400"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Eco Cooling Solutions Aruba location map"
+            ></iframe>
+        </div>
+        <div class="map-note reveal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Savaneta 367B, Sint Nicolaas, Aruba</span>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     FAQ SECTION
+============================================================ -->
+<section class="faq-section" aria-labelledby="faqHeading">
+    <div class="container">
+        <div class="section-header centered reveal">
+            <span class="section-label">FAQ</span>
+            <h2 class="section-title" id="faqHeading">Common Questions</h2>
+            <p class="section-sub">Everything you need to know before reaching out.</p>
+        </div>
+
+        <ul class="faq-list reveal" role="list">
+            <li class="faq-item">
+                <button
+                    class="faq-trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="faqBody1"
+                    id="faqTrigger1"
+                >
+                    What areas do you serve?
+                    <span class="faq-chevron" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-body" id="faqBody1" role="region" aria-labelledby="faqTrigger1">
+                    <div class="faq-body-inner">
+                        We serve all of Aruba &mdash; from Oranjestad and Noord to San Nicolas, Santa Cruz, Savaneta, and everything in between. No matter where you are on the island, our technicians can reach you. Same-day availability is common for urgent repairs.
+                    </div>
+                </div>
+            </li>
+
+            <li class="faq-item">
+                <button
+                    class="faq-trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="faqBody2"
+                    id="faqTrigger2"
+                >
+                    How quickly can you respond to a service request?
+                    <span class="faq-chevron" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-body" id="faqBody2" role="region" aria-labelledby="faqTrigger2">
+                    <div class="faq-body-inner">
+                        For urgent AC breakdowns we aim for same-day service. For standard installations and maintenance, we typically schedule within 1&ndash;2 business days. After you submit a request or contact us by phone or WhatsApp, we'll confirm your appointment quickly &mdash; usually within a few hours.
+                    </div>
+                </div>
+            </li>
+
+            <li class="faq-item">
+                <button
+                    class="faq-trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="faqBody3"
+                    id="faqTrigger3"
+                >
+                    Do you offer maintenance plans?
+                    <span class="faq-chevron" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-body" id="faqBody3" role="region" aria-labelledby="faqTrigger3">
+                    <div class="faq-body-inner">
+                        Yes! We offer flexible preventive maintenance plans for both residential and commercial clients. Plans include regular filter cleaning, coil inspections, refrigerant level checks, and system diagnostics. Keeping your AC serviced regularly extends its lifespan and keeps energy costs down. Contact us to discuss a plan that fits your needs and budget.
+                    </div>
+                </div>
+            </li>
+
+            <li class="faq-item">
+                <button
+                    class="faq-trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="faqBody4"
+                    id="faqTrigger4"
+                >
+                    Which AC brands do you service?
+                    <span class="faq-chevron" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-body" id="faqBody4" role="region" aria-labelledby="faqTrigger4">
+                    <div class="faq-body-inner">
+                        Our certified technicians are trained to work on 13+ brands, including Daikin, Mitsubishi, LG, Samsung, Carrier, Trane, Fujitsu, Panasonic, Gree, Haier, Midea, York, and Lennox. Whether you have a mini-split, central AC, cassette unit, or multi-zone system &mdash; we've got it covered.
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     CTA BAND
+============================================================ -->
+<section class="cta-band reveal" aria-label="Call to action">
+    <div class="container">
+        <div class="cta-band-inner">
+            <div>
+                <h2>Ready for Ice-Cold Comfort?</h2>
+                <p>Our team is standing by &mdash; call or WhatsApp us for fast service across all of Aruba.</p>
+            </div>
+            <div class="cta-band-btns">
+                <a href="tel:+2975945773" class="btn btn-white-solid">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.8 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.7 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.69a16 16 0 006.29 6.29l1.05-1.05a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                    Call Us Now
+                </a>
+                <a href="https://wa.me/2975945773" target="_blank" rel="noopener" class="btn-outline-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Eco Cooling Solutions Aruba</h4>
-                <p>Complete cooling solutions for homes and businesses.<br>AC repair, installation, maintenance &amp; protective coating services across Aruba.</p>
+
+            <!-- Brand -->
+            <div>
+                <a href="index.html" class="logo" aria-label="Eco Cooling Solutions Aruba home" style="margin-bottom:var(--s4);display:inline-flex;">
+                    <div class="logo-img">
+                        <img src="ecs-logo.png" alt="Eco Cooling Solutions logo">
+                    </div>
+                    <div>
+                        <span class="logo-name" style="color:var(--white);">Eco Cooling Solutions</span>
+                        <span class="logo-tag">Aruba</span>
+                    </div>
+                </a>
+                <p class="footer-brand-desc">Complete cooling solutions for homes and businesses across Aruba. AC repair, installation, maintenance &amp; protective coating.</p>
                 <div class="footer-social">
-                    <a href="https://www.facebook.com/ecsaruba/" target="_blank" aria-label="Facebook">
+                    <a href="https://www.facebook.com/ecsaruba/" target="_blank" rel="noopener" aria-label="Facebook">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                     </a>
-                    <a href="https://wa.me/2975945773" target="_blank" aria-label="WhatsApp">
+                    <a href="https://wa.me/2975945773" target="_blank" rel="noopener" aria-label="WhatsApp">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     </a>
                     <a href="mailto:info@ecocoolingaruba.com" aria-label="Email">
@@ -281,18 +955,21 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                     </a>
                 </div>
-                <div class="footer-stars"><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
             </div>
+
+            <!-- Services -->
             <div class="footer-col">
                 <h4>Services</h4>
                 <ul>
                     <li><a href="services.html">AC Repair</a></li>
-                    <li><a href="services.html">Installation</a></li>
+                    <li><a href="services.html">AC Installation</a></li>
                     <li><a href="services.html">Maintenance</a></li>
                     <li><a href="services.html">Protective Coating</a></li>
                     <li><a href="services.html">Troubleshooting</a></li>
                 </ul>
             </div>
+
+            <!-- Company -->
             <div class="footer-col">
                 <h4>Company</h4>
                 <ul>
@@ -301,64 +978,242 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
+
+            <!-- Contact Info -->
             <div class="footer-col">
                 <h4>Contact Info</h4>
-                <p>Savaneta 367B<br>Sint Nicolaas, Aruba</p>
-                <p style="margin-top: 10px;">Phone/WhatsApp: 594-5773<br>Email: info@ecocoolingaruba.com</p>
+                <div class="footer-contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    <span>Savaneta 367B, Sint Nicolaas, Aruba</span>
+                </div>
+                <div class="footer-contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.8 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.7 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.69a16 16 0 006.29 6.29l1.05-1.05a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                    <a href="tel:+2975945773" style="color:rgba(255,255,255,.55);">594-5773</a>
+                </div>
+                <div class="footer-contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    <a href="mailto:info@ecocoolingaruba.com" style="color:rgba(255,255,255,.55);">info@ecocoolingaruba.com</a>
+                </div>
             </div>
+
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Eco Cooling Solutions Aruba. All rights reserved.</p>
+            <p>Savaneta 367B, Sint Nicolaas, Aruba</p>
         </div>
     </div>
 </footer>
 
-<!-- WhatsApp Button -->
-<a href="https://wa.me/2975945773" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-<style>
-.whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999; transition: all 0.3s; animation: pulse-wa 2s infinite; }
-.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37,211,102,0.5); }
-@keyframes pulse-wa { 0% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); } 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } }
-</style>
 
+<!-- ============================================================
+     WHATSAPP FLOAT
+============================================================ -->
+<a href="https://wa.me/2975945773" target="_blank" rel="noopener" class="wa-float" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+</a>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
 <script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
+(function () {
+    'use strict';
+
+    /* ---- Header scroll effect ---- */
+    var header = document.getElementById('header');
+    function onScroll() {
+        header.classList.toggle('scrolled', window.scrollY > 20);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---- Hamburger / Mobile Nav ---- */
+    var hamburger = document.getElementById('hamburger');
+    var mobileNav  = document.getElementById('mobileNav');
+
+    function openMenu() {
+        hamburger.classList.add('open');
+        mobileNav.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', function () {
+        mobileNav.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeMenu();
+    });
+
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+    });
+
+    /* ---- Scroll Reveal ---- */
+    var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(function (el) {
+        revealObserver.observe(el);
+    });
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                document.getElementById('mainNav').classList.remove('active');
+    /* ---- FAQ Accordion ---- */
+    document.querySelectorAll('.faq-trigger').forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+            var item   = trigger.closest('.faq-item');
+            var bodyEl = document.getElementById(trigger.getAttribute('aria-controls'));
+            var isOpen = item.classList.contains('open');
+
+            // Close all open items
+            document.querySelectorAll('.faq-item.open').forEach(function (openItem) {
+                openItem.classList.remove('open');
+                openItem.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+                openItem.querySelector('.faq-body').style.maxHeight = '0';
+            });
+
+            // Open clicked item if it was closed
+            if (!isOpen) {
+                item.classList.add('open');
+                trigger.setAttribute('aria-expanded', 'true');
+                bodyEl.style.maxHeight = bodyEl.scrollHeight + 'px';
             }
         });
     });
 
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('.header');
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.12)';
-            header.style.padding = '0';
-        } else {
-            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
-            header.style.padding = '';
+    /* ---- Form Validation helpers ---- */
+    var validators = [
+        {
+            inputId: 'inputName',
+            errorId: 'errorName',
+            check: function (v) { return v.trim().length > 1; }
+        },
+        {
+            inputId: 'inputPhone',
+            errorId: 'errorPhone',
+            check: function (v) { return v.trim().length > 0; }
+        },
+        {
+            inputId: 'inputEmail',
+            errorId: 'errorEmail',
+            check: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+        },
+        {
+            inputId: 'inputService',
+            errorId: 'errorService',
+            check: function (v) { return v !== ''; }
         }
+    ];
+
+    function showError(inputId, errorId) {
+        var el = document.getElementById(inputId);
+        var err = document.getElementById(errorId);
+        if (el)  el.classList.add('error');
+        if (err) err.classList.add('visible');
+    }
+    function clearError(inputId, errorId) {
+        var el = document.getElementById(inputId);
+        var err = document.getElementById(errorId);
+        if (el)  el.classList.remove('error');
+        if (err) err.classList.remove('visible');
+    }
+
+    // Live validation: clear error on valid input, show on blur if still invalid
+    validators.forEach(function (v) {
+        var input = document.getElementById(v.inputId);
+        if (!input) return;
+        input.addEventListener('input', function () {
+            if (v.check(input.value)) clearError(v.inputId, v.errorId);
+        });
+        input.addEventListener('blur', function () {
+            if (input.value !== '' && !v.check(input.value)) {
+                showError(v.inputId, v.errorId);
+            }
+        });
     });
 
-    document.querySelectorAll('.nav a').forEach(link => {
-        if (link.getAttribute('href') === 'contact.html') {
-            link.classList.add('active');
-        }
-    });
+    /* ---- Form Submission ---- */
+    var contactForm  = document.getElementById('contactForm');
+    var submitBtn    = document.getElementById('submitBtn');
+    var formSuccess  = document.getElementById('formSuccess');
+    var formResetBtn = document.getElementById('formResetBtn');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var valid = true;
+            var firstErrorInput = null;
+
+            validators.forEach(function (v) {
+                var input = document.getElementById(v.inputId);
+                if (!input) return;
+                if (!v.check(input.value)) {
+                    showError(v.inputId, v.errorId);
+                    valid = false;
+                    if (!firstErrorInput) firstErrorInput = input;
+                } else {
+                    clearError(v.inputId, v.errorId);
+                }
+            });
+
+            if (!valid) {
+                if (firstErrorInput) firstErrorInput.focus();
+                return;
+            }
+
+            // Enter loading state
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            // Simulate a 1.5s async request
+            setTimeout(function () {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+
+                // Hide form, show success
+                contactForm.style.display = 'none';
+                formSuccess.classList.add('visible');
+                formSuccess.focus();
+            }, 1500);
+        });
+    }
+
+    if (formResetBtn) {
+        formResetBtn.addEventListener('click', function () {
+            if (contactForm) {
+                contactForm.reset();
+                contactForm.style.display = '';
+            }
+            validators.forEach(function (v) { clearError(v.inputId, v.errorId); });
+            formSuccess.classList.remove('visible');
+            var firstInput = document.getElementById('inputName');
+            if (firstInput) firstInput.focus();
+        });
+    }
+
+})();
 </script>
 
 </body>

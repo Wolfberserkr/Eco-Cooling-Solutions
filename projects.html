@@ -3,318 +3,901 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Eco Cooling Solutions Aruba</title>
+    <title>Our Projects - Eco Cooling Solutions Aruba</title>
+    <meta name="description" content="Browse real AC installation, repair, maintenance and protective coating projects completed across Aruba by Eco Cooling Solutions.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shared.css">
+
     <style>
-        /* ===== RESET & BASE ===== */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Open Sans', sans-serif; color: #333; line-height: 1.6; overflow-x: hidden; background: #fff; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
-        a { text-decoration: none; color: inherit; }
-        img { max-width: 100%; display: block; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        /* ============================================================
+           PAGE-LEVEL STYLES — projects.html
+        ============================================================ */
 
-        :root {
-            --primary: #0077B6; --primary-dark: #023E8A; --accent: #00B4D8; --accent-light: #90E0EF; --highlight: #F77F00;
-            --highlight-hover: #E06C00; --dark: #1B2A4A; --light-bg: #F0F7FA; --white: #ffffff; --text: #333333;
-            --text-light: #666666; --gradient-cta: linear-gradient(135deg, #023E8A, #0077B6);
+        /* ---- Filter Bar ---- */
+        .filter-section {
+            padding: var(--s7) 0 var(--s5);
+        }
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--s2);
+            justify-content: center;
+        }
+        .filter-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--s2);
+            padding: 10px 22px;
+            min-height: 44px;
+            border-radius: var(--r-full);
+            font-family: var(--font-head);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .3px;
+            cursor: pointer;
+            border: 2px solid var(--border);
+            background: var(--white);
+            color: var(--text-mid);
+            transition: all var(--t-base) var(--ease-out);
+            user-select: none;
+        }
+        .filter-pill:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--surface);
+        }
+        .filter-pill.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(0,119,182,.35);
+        }
+        .filter-pill .pill-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 800;
+            background: rgba(0,0,0,.08);
+            transition: background var(--t-fast);
+        }
+        .filter-pill.active .pill-count {
+            background: rgba(255,255,255,.25);
         }
 
-        /* Header */
-        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); box-shadow: 0 2px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; }
-        .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 10px 40px; max-width: 1400px; margin: 0 auto; }
-        .logo { display: flex; align-items: center; gap: 12px; }
-        .logo-icon { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
-        .logo-text h1 { font-size: 16px; font-weight: 700; color: var(--primary-dark); line-height: 1.2; }
-        .logo-text span { font-size: 10px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; }
-        .nav { display: flex; align-items: center; gap: 5px; }
-        .nav a { padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--dark); border-radius: 6px; transition: all 0.3s; }
-        .nav a:hover, .nav a.active { color: var(--primary); background: var(--light-bg); }
-        .nav-icons { display: flex; align-items: center; gap: 10px; margin-left: 10px; }
-        .nav-icon { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ddd; display: flex; align-items: center; justify-content: center; transition: all 0.3s; cursor: pointer; }
-        .nav-icon:hover { border-color: var(--primary); background: var(--light-bg); }
-        .nav-icon svg { width: 18px; height: 18px; stroke: var(--dark); }
-        .btn-cta { display: inline-block; padding: 12px 28px; background: var(--highlight); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-radius: 30px; border: none; cursor: pointer; transition: all 0.3s; }
-        .btn-cta:hover { background: var(--highlight-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(247,127,0,0.3); }
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
-        .hamburger span { width: 25px; height: 3px; background: var(--dark); border-radius: 2px; transition: all 0.3s; }
+        /* ---- Projects Grid ---- */
+        .projects-section {
+            padding-bottom: var(--s9);
+        }
+        .projects-grid {
+            columns: 3;
+            column-gap: var(--s5);
+        }
+        .project-card {
+            break-inside: avoid;
+            margin-bottom: var(--s5);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out), box-shadow var(--t-base) var(--ease-out);
+            position: relative;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+        /* Filter hide state */
+        .project-card.hidden {
+            opacity: 0;
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
 
-        /* Page Header */
-        .page-header { padding: 60px 0; margin-top: 85px; background: linear-gradient(135deg, #023e8a 0%, #0077b6 50%, #00b4d8 100%); text-align: center; }
-        .page-header h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: #fff; font-family: 'Montserrat', sans-serif; }
-        .page-header p { color: rgba(255,255,255,0.8); margin-top: 10px; font-size: 16px; }
+        /* Card image wrapper */
+        .card-img-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+        .card-img-wrap img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s var(--ease-out);
+        }
+        .project-card:hover .card-img-wrap img {
+            transform: scale(1.06);
+        }
+        /* Dark gradient overlay on hover */
+        .card-img-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(2,30,70,.75) 0%, rgba(2,30,70,.1) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.35s var(--ease-out);
+        }
+        .project-card:hover .card-img-wrap::after {
+            opacity: 1;
+        }
+        /* Category chip top-left */
+        .card-category-chip {
+            position: absolute;
+            top: var(--s3);
+            left: var(--s3);
+            z-index: 2;
+            padding: 5px 12px;
+            border-radius: var(--r-full);
+            font-family: var(--font-head);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            background: rgba(2,62,138,.72);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,.2);
+        }
 
-        /* Projects Section */
-        .projects { padding: 80px 0; background: var(--light-bg); }
-        .projects .section-header { text-align: center; margin-bottom: 50px; }
-        .projects .section-header h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 10px; }
-        .projects .section-header h3 { font-size: 36px; color: var(--primary-dark); background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-        .project-card { position: relative; border-radius: 16px; overflow: hidden; height: 280px; cursor: pointer; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        .project-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .project-card:hover img { transform: scale(1.08); }
-        .project-card:hover { transform: translateY(-8px) !important; box-shadow: 0 25px 50px rgba(0,0,0,0.2) !important; }
-        .project-card .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(2,62,138,0.9) 0%, rgba(0,119,182,0.4) 40%, transparent 70%) !important; display: flex; align-items: flex-end; padding: 25px; opacity: 0; transition: opacity 0.4s; }
-        .project-card:hover .overlay { opacity: 1; }
-        .project-card .overlay h4 { color: #fff; font-size: 16px; }
-        .project-card .overlay p { color: rgba(255,255,255,0.8); font-size: 13px; }
+        /* Card body */
+        .card-body {
+            padding: var(--s4) var(--s5) var(--s5);
+        }
+        .card-title {
+            font-family: var(--font-head);
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: var(--s2);
+            line-height: 1.3;
+        }
+        .card-location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: var(--s3);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+        .card-location svg {
+            width: 13px;
+            height: 13px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-mid);
+            line-height: 1.6;
+            margin-bottom: var(--s4);
+        }
+        .card-service-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--s2);
+            padding: 5px 12px;
+            border-radius: var(--r-sm);
+            font-family: var(--font-head);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .4px;
+            text-transform: uppercase;
+        }
+        .badge-installation { background: rgba(0,119,182,.1);  color: var(--primary); }
+        .badge-repair       { background: rgba(0,150,199,.12); color: #0077B6; }
+        .badge-maintenance  { background: rgba(34,197,94,.1);  color: #16A34A; }
+        .badge-coating      { background: rgba(247,127,0,.1);  color: var(--cta); }
 
-        /* Footer */
-        .footer-banner { background: var(--gradient-cta); padding: 25px 0; text-align: center; }
-        .footer-banner p { color: rgba(255,255,255,0.85); font-size: 14px; }
-        .footer { background: var(--dark); padding: 60px 0 30px; color: rgba(255,255,255,0.7); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-        .footer-col h4 { color: #fff; font-size: 16px; margin-bottom: 20px; }
-        .footer-col p { font-size: 14px; line-height: 1.8; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.3s; }
-        .footer-col ul li a:hover { color: var(--accent); }
-        .footer-social { display: flex; gap: 12px; margin-top: 20px; }
-        .footer-social a { width: 40px; height: 40px; background: rgba(255,255,255,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
-        .footer-social a:hover { background: var(--primary); }
-        .footer-social a svg { width: 18px; height: 18px; fill: #fff; }
-        .footer-stars { margin-top: 15px; }
-        .footer-stars span { color: var(--highlight); font-size: 20px; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; text-align: center; font-size: 13px; }
+        /* ---- Stats Band ---- */
+        .stats-band {
+            background: var(--surface);
+            padding: var(--s8) 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .stats-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
+            padding: var(--s5) var(--s6);
+            position: relative;
+        }
+        .stat-item + .stat-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: var(--border);
+        }
+        .stat-number {
+            font-family: var(--font-head);
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: var(--s2);
+        }
+        .stat-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-        /* Animations */
-        .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        /* ---- Testimonial Highlight ---- */
+        .testimonial-section {
+            padding: var(--s9) 0;
+            background: var(--white);
+        }
+        .testimonial-card {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #1B2A4A 100%);
+            border-radius: var(--r-xl);
+            padding: var(--s8) var(--s9);
+            position: relative;
+            overflow: hidden;
+        }
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 320px; height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,180,216,.18), transparent 70%);
+            pointer-events: none;
+        }
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -40px;
+            width: 260px; height: 260px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,119,182,.15), transparent 70%);
+            pointer-events: none;
+        }
+        .testimonial-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 820px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .testimonial-stars {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: var(--s5);
+        }
+        .testimonial-stars svg {
+            width: 22px;
+            height: 22px;
+            fill: #FFC107;
+        }
+        .testimonial-quote-mark {
+            font-family: Georgia, serif;
+            font-size: 100px;
+            line-height: .6;
+            color: rgba(255,255,255,.12);
+            display: block;
+            margin-bottom: var(--s3);
+            user-select: none;
+        }
+        .testimonial-text {
+            font-size: clamp(17px, 2.2vw, 22px);
+            font-weight: 400;
+            color: rgba(255,255,255,.9);
+            line-height: 1.75;
+            margin-bottom: var(--s6);
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--s4);
+        }
+        .testimonial-author-divider {
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: var(--r-full);
+            flex-shrink: 0;
+        }
+        .testimonial-author-name {
+            font-family: var(--font-head);
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--white);
+        }
+        .testimonial-author-role {
+            font-size: 13px;
+            color: var(--accent);
+            margin-top: 2px;
+        }
 
-        .header { background: rgba(255,255,255,0.85) !important; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,119,182,0.08); }
-        .logo-icon { transition: all 0.4s ease !important; }
-        .logo:hover .logo-icon { transform: rotate(5deg) scale(1.08); filter: drop-shadow(0 4px 8px rgba(0,119,182,0.2)); }
-        .nav-icon { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important; }
-        .nav-icon:hover { transform: translateY(-3px) scale(1.1); box-shadow: 0 5px 15px rgba(0,119,182,0.2); }
-        .footer-social a { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important; }
-        .footer-social a:hover { background: linear-gradient(135deg, var(--primary), var(--accent)) !important; transform: translateY(-4px) rotate(5deg); box-shadow: 0 8px 20px rgba(0,119,182,0.3); }
-        .btn-cta { background: linear-gradient(135deg, #F77F00, #FF9E40, #F77F00) !important; background-size: 200% 200% !important; animation: gradient-shift 4s ease infinite; box-shadow: 0 4px 15px rgba(247,127,0,0.3); }
-        .btn-cta:hover { box-shadow: 0 8px 30px rgba(247,127,0,0.45), 0 0 20px rgba(247,127,0,0.2) !important; transform: translateY(-3px) scale(1.02) !important; }
-        @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-
+        /* ---- Responsive ---- */
         @media (max-width: 1024px) {
-            .projects-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .projects-grid { columns: 2; }
+            .stat-item + .stat-item::before { display: none; }
         }
-        @media (max-width: 768px) {
-            .header-inner { padding: 10px 20px; }
-            .nav { display: none; }
-            .hamburger { display: flex; }
-            .nav.active { display: flex; flex-direction: column; position: absolute; top: 85px; left: 0; right: 0; background: #fff; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-            .nav-icons { display: none; }
-            .projects-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
+        @media (max-width: 767px) {
+            .projects-grid { columns: 1; }
+            .testimonial-card { padding: var(--s6) var(--s5); }
+            .stats-inner { flex-direction: column; }
+        }
+        @media (max-width: 480px) {
+            .filter-pill { font-size: 12px; padding: 9px 16px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Header -->
-<header class="header">
-    <div class="header-inner">
-        <a href="index.html" class="logo">
-            <div class="logo-icon"><img src="ecs-logo.png" alt="ECS Logo"></div>
-            <div class="logo-text">
-                <h1>Eco Cooling Solutions</h1>
-                <span>Aruba's #1 Airco Service</span>
-            </div>
-        </a>
-        <nav class="nav" id="mainNav">
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="about.html">About Us</a>
-            <a href="projects.html" class="active">Projects</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-        <div class="nav-icons">
-            <a href="tel:+2975945773" class="nav-icon" title="Call Us">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
-            </a>
-            <a href="https://wa.me/2975945773" class="nav-icon" title="WhatsApp Us" target="_blank" style="border-color: #25D366;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </a>
-            <a href="mailto:info@ecocoolingaruba.com" class="nav-icon" title="Email Us">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-            </a>
-            <a href="contact.html" class="btn-cta" style="margin-left: 5px;">Request Quote</a>
-        </div>
-        <div class="hamburger" onclick="document.getElementById('mainNav').classList.toggle('active')">
-            <span></span><span></span><span></span>
-        </div>
-    </div>
-</header>
+    <!-- ============================================================
+         HEADER
+    ============================================================ -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
 
-<!-- Page Header -->
-<section class="page-header">
-    <h2>Our Projects</h2>
-    <p>Showcase of completed installations and service work</p>
-</section>
+                <!-- Logo -->
+                <a href="index.html" class="logo" aria-label="Eco Cooling Solutions — Home">
+                    <div class="logo-img">
+                        <img src="ecs-logo.png" alt="Eco Cooling Solutions logo" width="52" height="52">
+                    </div>
+                    <div>
+                        <span class="logo-name">Eco Cooling Solutions</span>
+                        <span class="logo-tag">Aruba</span>
+                    </div>
+                </a>
 
-<!-- Projects Section -->
-<section id="projects" class="projects">
-    <div class="container">
-        <div class="section-header fade-up">
-            <h2>Our Work</h2>
-            <h3>Recent Projects</h3>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card fade-up" style="grid-column: span 2; height: 340px;">
-                <img src="eco%201.jpeg" alt="Rooftop AC service">
-                <div class="overlay">
-                    <div><h4>Rooftop Unit Service</h4><p>Professional maintenance & refrigerant charging</p></div>
-                </div>
-            </div>
-            <div class="project-card fade-up">
-                <img src="eco%202.jpeg" alt="ADINA Inverter installation">
-                <div class="overlay">
-                    <div><h4>ADINA Inverter Install</h4><p>High efficiency 18 SEER outdoor unit</p></div>
-                </div>
-            </div>
-            <div class="project-card fade-up">
-                <img src="eco%203.jpeg" alt="New construction installation">
-                <div class="overlay">
-                    <div><h4>New Construction</h4><p>Piping & line set installation</p></div>
-                </div>
-            </div>
-            <div class="project-card fade-up">
-                <img src="eco%204.jpeg" alt="Indoor unit drilling">
-                <div class="overlay">
-                    <div><h4>Indoor Installation</h4><p>Wall drilling & indoor unit setup</p></div>
-                </div>
-            </div>
-            <div class="project-card fade-up">
-                <img src="eco%205.jpeg" alt="Residential outdoor unit">
-                <div class="overlay">
-                    <div><h4>Residential Install</h4><p>Gree outdoor unit with full line set</p></div>
-                </div>
-            </div>
-            <div class="project-card fade-up" style="grid-column: span 2; height: 340px;">
-                <img src="eco%206.jpeg" alt="Team rooftop ADINA install">
-                <div class="overlay">
-                    <div><h4>Team Rooftop Install</h4><p>ADINA Inverter unit — dual technician job</p></div>
-                </div>
-            </div>
-            <div class="project-card fade-up">
-                <img src="eco%207.jpeg" alt="Indoor unit maintenance">
-                <div class="overlay">
-                    <div><h4>Split Unit Maintenance</h4><p>Indoor unit service & cleaning</p></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                <!-- Desktop Nav -->
+                <nav class="nav" aria-label="Main navigation">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="projects.html" class="active">Projects</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
 
-<!-- Footer Banner -->
-<div class="footer-banner">
-    <div class="container">
-        <p>Eco Cooling Solutions Aruba — One of the leading HVAC service providers in Aruba.</p>
-    </div>
-</div>
-
-<!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Eco Cooling Solutions Aruba</h4>
-                <p>Complete cooling solutions for homes and businesses.<br>AC repair, installation, maintenance &amp; protective coating services across Aruba.</p>
-                <div class="footer-social">
-                    <a href="https://www.facebook.com/ecsaruba/" target="_blank" aria-label="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <!-- Actions -->
+                <div class="header-actions">
+                    <!-- Phone -->
+                    <a href="tel:+2975940406" class="icon-btn" aria-label="Call us">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.34 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.24 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
                     </a>
-                    <a href="https://wa.me/2975945773" target="_blank" aria-label="WhatsApp">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/2975940406" class="icon-btn wa" target="_blank" rel="noopener" aria-label="WhatsApp us">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                        </svg>
                     </a>
-                    <a href="mailto:info@ecocoolingaruba.com" aria-label="Email">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <!-- CTA Button -->
+                    <a href="contact.html" class="btn btn-primary">Request Quote</a>
+                </div>
+
+                <!-- Hamburger -->
+                <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="btn btn-primary" style="margin-top: var(--s5);">Request Quote</a>
+    </nav>
+
+
+    <!-- ============================================================
+         PAGE BANNER
+    ============================================================ -->
+    <section class="page-banner">
+        <div class="container">
+            <span class="section-label">Portfolio</span>
+            <h1>Our Projects</h1>
+            <p>Real installations across homes and businesses throughout Aruba.</p>
+        </div>
+        <div class="page-banner-wave">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/>
+            </svg>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         FILTER BAR
+    ============================================================ -->
+    <section class="filter-section" aria-label="Filter projects">
+        <div class="container">
+            <div class="filter-bar" role="group" aria-label="Project category filters">
+                <button class="filter-pill active" data-filter="all" aria-pressed="true">
+                    All
+                    <span class="pill-count">7</span>
+                </button>
+                <button class="filter-pill" data-filter="residential" aria-pressed="false">
+                    Residential
+                    <span class="pill-count">3</span>
+                </button>
+                <button class="filter-pill" data-filter="commercial" aria-pressed="false">
+                    Commercial
+                    <span class="pill-count">2</span>
+                </button>
+                <button class="filter-pill" data-filter="maintenance" aria-pressed="false">
+                    Maintenance
+                    <span class="pill-count">1</span>
+                </button>
+                <button class="filter-pill" data-filter="coating" aria-pressed="false">
+                    Protective Coating
+                    <span class="pill-count">1</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         PROJECTS GRID
+    ============================================================ -->
+    <section class="projects-section" aria-label="Project portfolio">
+        <div class="container">
+            <div class="projects-grid" id="projectsGrid">
+
+                <!-- Card 1 — Residential -->
+                <article class="project-card reveal" data-category="residential">
+                    <div class="card-img-wrap">
+                        <img src="eco 1.jpeg" alt="Home AC installation at Palm Beach villa" loading="lazy">
+                        <span class="card-category-chip">Residential</span>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">Home Installation — Palm Beach</h2>
+                        <p class="card-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Palm Beach, Aruba
+                        </p>
+                        <p class="card-desc">Split system installation for 3-bedroom villa. Energy-efficient units selected for the coastal climate with full warranty coverage.</p>
+                        <span class="card-service-badge badge-installation">Installation</span>
+                    </div>
+                </article>
+
+                <!-- Card 2 — Commercial -->
+                <article class="project-card reveal reveal-delay-1" data-category="commercial">
+                    <div class="card-img-wrap">
+                        <img src="eco 2.jpeg" alt="Multi-unit AC installation at Oranjestad office complex" loading="lazy">
+                        <span class="card-category-chip">Commercial</span>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">Office Complex — Oranjestad</h2>
+                        <p class="card-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Oranjestad, Aruba
+                        </p>
+                        <p class="card-desc">Multi-unit installation for commercial property spanning multiple floors. Zoned climate control with centralized monitoring.</p>
+                        <span class="card-service-badge badge-installation">Installation</span>
+                    </div>
+                </article>
+
+                <!-- Card 3 — Residential (Repair) -->
+                <article class="project-card reveal reveal-delay-2" data-category="residential">
+                    <div class="card-img-wrap">
+                        <img src="eco 3.jpeg" alt="AC repair and system check at Eagle Beach apartment" loading="lazy">
+                        <span class="card-category-chip">Residential</span>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">Apartment — Eagle Beach</h2>
+                        <p class="card-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Eagle Beach, Aruba
+                        </p>
+                        <p class="card-desc">AC repair and full system diagnostic check. Identified refrigerant leak, replaced worn components and restored peak performance.</p>
+                        <span class="card-service-badge badge-repair">Repair</span>
+                    </div>
+                </article>
+
+                <!-- Card 4 — Commercial -->
+                <article class="project-card reveal" data-category="commercial">
+                    <div class="card-img-wrap">
+                        <img src="eco 4.jpeg" alt="10-unit hotel room AC installation in Noord" loading="lazy">
+                        <span class="card-category-chip">Commercial</span>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">Hotel Rooms — Noord</h2>
+                        <p class="card-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Noord, Aruba
+                        </p>
+                        <p class="card-desc">10-unit installation across hotel rooms with an ongoing maintenance contract. Quiet inverter technology for guest comfort.</p>
+                        <span class="card-service-badge badge-installation">Installation</span>
+                    </div>
+                </article>
+
+                <!-- Card 5 — Maintenance -->
+                <article class="project-card reveal reveal-delay-1" data-category="maintenance">
+                    <div class="card-img-wrap">
+                        <img src="eco 5.jpeg" alt="Annual AC service and filter replacement in Savaneta" loading="lazy">
+                        <span class="card-category-chip">Maintenance</span>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">Annual Service — Savaneta</h2>
+                        <p class="card-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Savaneta, Aruba
+                        </p>
+                        <p class="card-desc">Scheduled annual maintenance covering deep filter cleaning, refrigerant top-up, coil inspection and a full performance report.</p>
+                        <span class="card-service-badge badge-maintenance">Maintenance</span>
+                    </div>
+                </article>
+
+                <!-- Card 6 — Protective Coating -->
+                <article class="project-card reveal reveal-delay-2" data-category="coating">
+                    <div class="card-img-wrap">
+                        <img src="eco 6.jpeg" alt="Anti-corrosion protective coating in Santa Cruz" loading="lazy">
+                        <span class="card-category-chip">Protective Coating</span>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">Protective Coating — Santa Cruz</h2>
+                        <p class="card-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Santa Cruz, Aruba
+                        </p>
+                        <p class="card-desc">Full anti-corrosion coating treatment for coastal property. Extended unit lifespan significantly in Aruba's salt-air environment.</p>
+                        <span class="card-service-badge badge-coating">Protective Coating</span>
+                    </div>
+                </article>
+
+                <!-- Card 7 — Residential -->
+                <article class="project-card reveal" data-category="residential">
+                    <div class="card-img-wrap">
+                        <img src="eco 7.jpeg" alt="Residential AC upgrade in San Nicolas" loading="lazy">
+                        <span class="card-category-chip">Residential</span>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">Residential Upgrade — San Nicolas</h2>
+                        <p class="card-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            San Nicolas, Aruba
+                        </p>
+                        <p class="card-desc">Old unit replacement with a high-efficiency inverter system. Reduced electricity consumption by approximately 35% versus the prior installation.</p>
+                        <span class="card-service-badge badge-installation">Installation</span>
+                    </div>
+                </article>
+
+            </div><!-- /projects-grid -->
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         STATS BAND
+    ============================================================ -->
+    <section class="stats-band" aria-label="Company statistics">
+        <div class="container">
+            <div class="stats-inner">
+
+                <div class="stat-item reveal">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+
+                <div class="stat-item reveal reveal-delay-1">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+
+                <div class="stat-item reveal reveal-delay-2">
+                    <div class="stat-number">13+</div>
+                    <div class="stat-label">Brands Carried</div>
+                </div>
+
+                <div class="stat-item reveal reveal-delay-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:40px;height:40px;display:block;margin:0 auto var(--s2);color:var(--primary);"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    <div class="stat-label">Island-Wide Coverage</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         TESTIMONIAL HIGHLIGHT
+    ============================================================ -->
+    <section class="testimonial-section" aria-label="Client testimonial">
+        <div class="container">
+            <div class="section-header centered reveal">
+                <span class="section-label">Client Feedback</span>
+                <h2 class="section-title">What Our Clients Say</h2>
+            </div>
+
+            <div class="testimonial-card reveal">
+                <div class="testimonial-inner">
+
+                    <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+
+                    <span class="testimonial-quote-mark" aria-hidden="true">"</span>
+
+                    <p class="testimonial-text">
+                        We contracted Eco Cooling Solutions to outfit the entire second floor of our commercial building in Oranjestad — twelve units in total. From the initial site assessment to final commissioning, the team was professional, punctual and meticulous. They took the time to explain every decision, kept disruption to our staff to an absolute minimum, and delivered exactly on schedule. Two years on, every unit is still running perfectly. The maintenance contract we signed has been equally impressive — they show up on time, document everything and genuinely care about the longevity of the systems. We would not trust anyone else with our properties in Aruba.
+                    </p>
+
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-divider" aria-hidden="true"></div>
+                        <div>
+                            <div class="testimonial-author-name">Marcus van der Berg</div>
+                            <div class="testimonial-author-role">Operations Manager — Commercial Property, Oranjestad</div>
+                        </div>
+                        <div class="testimonial-author-divider" aria-hidden="true"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         CTA BAND
+    ============================================================ -->
+    <section class="cta-band" aria-label="Call to action">
+        <div class="container">
+            <div class="cta-band-inner reveal">
+                <div>
+                    <h2>Start Your Project Today</h2>
+                    <p>Get a free, no-obligation quote for your home or business anywhere in Aruba.</p>
+                </div>
+                <div class="cta-band-btns">
+                    <a href="contact.html" class="btn btn-white-solid">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;flex-shrink:0;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        Request Free Quote
                     </a>
-                    <a href="tel:+2975945773" aria-label="Phone">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <a href="https://wa.me/2975940406" class="btn btn-wa" target="_blank" rel="noopener">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:18px;height:18px;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        WhatsApp Us
                     </a>
                 </div>
-                <div class="footer-stars"><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
-            </div>
-            <div class="footer-col">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="services.html">AC Repair</a></li>
-                    <li><a href="services.html">Installation</a></li>
-                    <li><a href="services.html">Maintenance</a></li>
-                    <li><a href="services.html">Protective Coating</a></li>
-                    <li><a href="services.html">Troubleshooting</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="projects.html">Our Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Info</h4>
-                <p>Savaneta 367B<br>Sint Nicolaas, Aruba</p>
-                <p style="margin-top: 10px;">Phone/WhatsApp: 594-5773<br>Email: info@ecocoolingaruba.com</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Eco Cooling Solutions Aruba. All rights reserved.</p>
+    </section>
+
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer" aria-label="Site footer">
+        <div class="container">
+            <div class="footer-grid">
+
+                <!-- Brand column -->
+                <div class="footer-col">
+                    <a href="index.html" class="logo" aria-label="Eco Cooling Solutions — Home" style="margin-bottom: var(--s4); display:inline-flex;">
+                        <div class="logo-img">
+                            <img src="ecs-logo.png" alt="Eco Cooling Solutions logo" width="52" height="52">
+                        </div>
+                        <div>
+                            <span class="logo-name" style="color:var(--white);">Eco Cooling Solutions</span>
+                            <span class="logo-tag">Aruba</span>
+                        </div>
+                    </a>
+                    <p class="footer-brand-desc">
+                        Aruba's trusted HVAC specialists. We install, service and protect air conditioning systems island-wide — from cozy apartments to large commercial properties.
+                    </p>
+                    <div class="footer-social">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/EcoCoolingSolutionsAruba" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/ecocoolingsolutionsaruba" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/2975940406" target="_blank" rel="noopener" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick links -->
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services links -->
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">AC Installation</a></li>
+                        <li><a href="services.html">AC Repair</a></li>
+                        <li><a href="services.html">Maintenance</a></li>
+                        <li><a href="services.html">Protective Coating</a></li>
+                        <li><a href="services.html">Commercial HVAC</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact info -->
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.34 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.24 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span><a href="tel:+2975940406" style="color:inherit;">+297 594 0406</a></span>
+                    </div>
+
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <span><a href="mailto:info@ecocoolingsolutionsaruba.com" style="color:inherit;">info@ecocoolingsolutionsaruba.com</a></span>
+                    </div>
+
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Aruba, Dutch Caribbean</span>
+                    </div>
+
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <span>Mon–Sat: 8:00 AM – 6:00 PM</span>
+                    </div>
+                </div>
+
+            </div><!-- /footer-grid -->
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eco Cooling Solutions Aruba. All rights reserved.</p>
+                <p>Designed with care for Aruba's climate.</p>
+            </div>
+
         </div>
-    </div>
-</footer>
+    </footer>
 
-<!-- WhatsApp Button -->
-<a href="https://wa.me/2975945773" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-<style>
-.whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999; transition: all 0.3s; animation: pulse-wa 2s infinite; }
-.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37,211,102,0.5); }
-@keyframes pulse-wa { 0% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); } 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } }
-</style>
 
-<script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1 });
+    <!-- ============================================================
+         WHATSAPP FLOAT
+    ============================================================ -->
+    <a href="https://wa.me/2975940406" class="wa-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+    </a>
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                document.getElementById('mainNav').classList.remove('active');
+    <!-- ============================================================
+         JAVASCRIPT
+    ============================================================ -->
+    <script>
+    (function () {
+        'use strict';
+
+        /* ---- Header scroll behaviour ---- */
+        var header = document.getElementById('header');
+        function onScroll() {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        /* ---- Hamburger / mobile nav ---- */
+        var hamburger = document.getElementById('hamburger');
+        var mobileNav  = document.getElementById('mobileNav');
+
+        hamburger.addEventListener('click', function () {
+            var isOpen = mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', String(isOpen));
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         });
-    });
 
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('.header');
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.12)';
-            header.style.padding = '0';
+        /* Close mobile nav when a link inside it is clicked */
+        mobileNav.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                mobileNav.classList.remove('open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ---- Scroll reveal ---- */
+        if ('IntersectionObserver' in window) {
+            var revealObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.reveal').forEach(function (el) {
+                revealObserver.observe(el);
+            });
         } else {
-            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
-            header.style.padding = '';
+            /* Fallback: show all immediately */
+            document.querySelectorAll('.reveal').forEach(function (el) {
+                el.classList.add('visible');
+            });
         }
-    });
 
-    document.querySelectorAll('.nav a').forEach(link => {
-        if (link.getAttribute('href') === 'projects.html') {
-            link.classList.add('active');
+        /* ---- Filter pills ---- */
+        var pills = document.querySelectorAll('.filter-pill');
+        var cards = document.querySelectorAll('.project-card');
+
+        function filterProjects(category) {
+            cards.forEach(function (card) {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
         }
-    });
-</script>
+
+        pills.forEach(function (pill) {
+            pill.addEventListener('click', function () {
+                /* Update active pill */
+                pills.forEach(function (p) {
+                    p.classList.remove('active');
+                    p.setAttribute('aria-pressed', 'false');
+                });
+                pill.classList.add('active');
+                pill.setAttribute('aria-pressed', 'true');
+
+                /* Apply filter */
+                filterProjects(pill.dataset.filter);
+            });
+        });
+
+    }());
+    </script>
 
 </body>
 </html>
