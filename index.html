@@ -1192,30 +1192,63 @@
     /* ============================================================
        RESPONSIVE
     ============================================================ */
+    /* ---- Tablet ---- */
     @media (max-width: 1024px) {
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .testi-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
     }
 
+    /* ---- Small tablet / large phone ---- */
     @media (max-width: 768px) {
+      /* Header */
       .main-nav { display: none; }
       .hamburger { display: flex; }
       .header-actions .btn-primary { display: none; }
+      .logo {
+        font-size: 1rem;
+      }
+      .logo-icon {
+        width: 40px; height: 40px;
+      }
+      .site-header { padding: .75rem 0; }
+      .site-header.scrolled { padding: .6rem 0; }
 
+      /* Hero */
+      .hero {
+        min-height: auto;
+        padding: 100px 0 60px;
+      }
       .hero-content {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 2rem;
+      }
+      .hero-left h1 {
+        font-size: clamp(1.6rem, 6vw, 2.4rem);
+      }
+      .hero-subtitle {
+        font-size: .95rem;
       }
       .hero-right {
         flex-direction: row;
         flex-wrap: wrap;
-        gap: .85rem;
+        gap: .75rem;
       }
-      .stat-card { flex: 1; min-width: 140px; padding: 1rem 1.1rem; }
+      .stat-card {
+        flex: 1;
+        min-width: 140px;
+        padding: 1rem 1.1rem;
+      }
+      .stat-icon {
+        width: 42px; height: 42px;
+      }
+      .stat-value {
+        font-size: 1.5rem;
+      }
 
-      .process-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      /* Sections */
+      .process-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .about-img-wrap { max-width: 480px; margin: 0 auto; }
 
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1224,24 +1257,99 @@
 
       .testi-grid { grid-template-columns: 1fr; }
 
-      .trust-strip-inner { gap: 1.25rem; }
-      .strip-item { font-size: .8rem; }
+      .trust-strip-inner { gap: 1rem; }
+      .strip-item { font-size: .75rem; }
 
+      /* CTA Band */
+      .cta-band h2 { font-size: 1.5rem; }
+      .cta-band p { font-size: .9rem; }
+
+      /* Footer */
       .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
       .footer-bottom { flex-direction: column; text-align: center; }
 
       .process-badge { right: .5rem; bottom: .5rem; }
+
+      /* Brands marquee */
+      .brands-section { padding: 2.5rem 0; }
+      .brands-label { font-size: .7rem; margin-bottom: 1.25rem; }
+      .brand-chip { padding: .45rem 1rem; font-size: .75rem; }
     }
 
+    /* ---- Phone ---- */
     @media (max-width: 480px) {
-      .hero-ctas { flex-direction: column; }
+      /* Header */
+      .logo {
+        font-size: .85rem;
+        gap: .4rem;
+      }
+      .logo-icon {
+        width: 34px; height: 34px;
+      }
+      .icon-btn {
+        width: 34px; height: 34px;
+      }
+      .icon-btn svg {
+        width: 14px; height: 14px;
+      }
+      .header-actions { gap: .4rem; }
+
+      /* Hero */
+      .hero {
+        padding: 85px 0 40px;
+      }
+      .hero-left h1 {
+        font-size: 1.5rem;
+      }
+      .hero-subtitle {
+        font-size: .88rem;
+        margin-bottom: 1.25rem;
+      }
+      .hero-badge {
+        font-size: .7rem;
+        padding: .35rem .75rem;
+        margin-bottom: 1rem;
+      }
+      .hero-ctas { flex-direction: column; gap: .65rem; }
       .hero-ctas .btn-primary,
       .hero-ctas .btn-outline { width: 100%; justify-content: center; }
+      .hero-trust { gap: .75rem; }
+      .trust-item { font-size: .75rem; }
+      .stat-card {
+        min-width: 100%;
+        padding: .85rem 1rem;
+        gap: .85rem;
+      }
+      .stat-icon { width: 38px; height: 38px; border-radius: 10px; }
+      .stat-value { font-size: 1.3rem; }
+      .stat-label { font-size: .72rem; }
+
+      /* Sections */
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+
+      /* CTA Band */
+      .cta-band { padding: 3rem 0; }
+      .cta-band h2 { font-size: 1.3rem; }
+      .cta-band p { font-size: .85rem; }
       .cta-band-btns { flex-direction: column; }
       .cta-band-btns .btn-white-solid,
       .cta-band-btns .btn-wa { width: 100%; justify-content: center; }
-      .services-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr; }
+
+      /* Testimonials */
+      .testi-card { padding: 1.25rem; }
+
+      /* Footer */
+      .footer-brand p { font-size: .85rem; }
+
+      /* WhatsApp float */
+      .wa-float {
+        width: 50px; height: 50px;
+        bottom: 1rem; right: 1rem;
+      }
+      .wa-float svg {
+        width: 24px; height: 24px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
