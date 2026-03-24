@@ -1,0 +1,11 @@
+# Eco Cooling Solutions Aruba
+# https://ecocoolingsolutions.net
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ecocoolingsolutions.net/sitemap.xml
+
+# Disallow admin or private paths (if any)
+Disallow: /.claude/
