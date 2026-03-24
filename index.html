@@ -2200,6 +2200,14 @@
   (function() {
     var loader = document.getElementById('loader');
     if (!loader) return;
+    // Only show loader once per browser session
+    if (sessionStorage.getItem('ecs-loader-shown')) {
+      loader.style.display = 'none';
+      document.body.classList.remove('loading');
+      document.body.classList.add('page-ready');
+      return;
+    }
+    sessionStorage.setItem('ecs-loader-shown', '1');
     var LOADER_HOLD = 3000;
     var LOADER_EXIT = 1300;
     setTimeout(function() {
