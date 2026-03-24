@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eco Cooling Solutions — Loader Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --primary:       #0077B6;
+    --primary-dark:  #023E8A;
+    --primary-light: #48CAE4;
+    --accent:        #00B4D8;
+    --dark:          #0D1B2A;
+    --dark-mid:      #1B2A4A;
+    --shell-white:   #F0F7FA;
+    --text-muted:    #6B7E94;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark);
+    color: var(--shell-white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body.loading { overflow: hidden; }
+
+  /* ===== INTRO LOADER ===== */
+  .loader-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--dark);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    pointer-events: all;
+  }
+  .loader-overlay.exit {
+    animation: loaderExit 1s cubic-bezier(0.77, 0, 0.175, 1) 0.3s forwards;
+  }
+
+  /* Logo container */
+  .loader-logo {
+    width: 220px; height: 220px;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.7);
+    animation: loaderLogoIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  }
+  .loader-logo img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 30px rgba(0, 119, 182, 0.35)) drop-shadow(0 0 60px rgba(72, 202, 228, 0.15));
+  }
+
+  /* Rotating ring around the logo */
+  .loader-ring {
+    position: absolute; inset: -22px;
+    animation: ringRotate 4s linear infinite;
+  }
+  .loader-ring svg {
+    width: 100%; height: 100%;
+  }
+  .loader-ring .ring-path {
+    fill: none;
+    stroke: url(#ringGradient);
+    stroke-width: 1.5;
+    stroke-dasharray: 540;
+    stroke-dashoffset: 540;
+    stroke-linecap: round;
+    animation: drawCircle 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.6s forwards;
+  }
+  .loader-ring .ring-glow {
+    fill: none;
+    stroke: var(--primary-light);
+    stroke-width: 4;
+    opacity: 0.12;
+    filter: blur(5px);
+    stroke-dasharray: 540;
+    stroke-dashoffset: 540;
+    animation: drawCircle 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.6s forwards;
+  }
+
+  /* Wordmark below */
+  .loader-wordmark {
+    margin-top: 32px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 6px; text-transform: uppercase;
+    color: var(--shell-white);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: loaderWordmarkIn 0.6s ease 1.4s forwards;
+  }
+
+  /* Accent line */
+  .loader-line {
+    width: 50px; height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    margin-top: 20px;
+    border-radius: 2px;
+    transform: scaleX(0);
+    animation: loaderLineGrow 0.5s ease 1.7s forwards;
+  }
+
+  /* Tagline */
+  .loader-tagline {
+    margin-top: 14px;
+    font-size: 11px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--text-muted);
+    opacity: 0;
+    animation: loaderTagIn 0.5s ease 2.0s forwards;
+  }
+
+  /* Ambient glow behind monogram */
+  .loader-glow {
+    position: absolute;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,119,182,0.08) 0%, transparent 70%);
+    animation: pulseGlow 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes loaderLogoIn {
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes drawCircle {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes ringRotate {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes loaderWordmarkIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes loaderLineGrow {
+    to { transform: scaleX(1); }
+  }
+  @keyframes loaderTagIn {
+    to { opacity: 0.6; }
+  }
+  @keyframes loaderExit {
+    0%   { clip-path: inset(0 0 0 0); }
+    100% { clip-path: inset(0 0 100% 0); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.15); opacity: 0.6; }
+  }
+
+  /* ===== FAKE PAGE BEHIND (for preview) ===== */
+  .fake-page {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0D1B2A 0%, #1B2A4A 40%, #0D1B2A 100%);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  body.page-ready .fake-page { opacity: 1; }
+
+  .fake-page h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    font-weight: 800;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
+    animation-play-state: paused;
+  }
+  .fake-page p {
+    font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+    color: rgba(255,255,255,.45);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.2s forwards;
+    animation-play-state: paused;
+  }
+  body.page-ready .fake-page h1,
+  body.page-ready .fake-page p {
+    animation-play-state: running;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Replay button */
+  .replay-btn {
+    position: fixed; bottom: 24px; right: 24px; z-index: 100000;
+    padding: 10px 22px;
+    border: 2px solid rgba(72, 202, 228, 0.4);
+    background: rgba(13, 27, 42, 0.9);
+    color: var(--primary-light);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    border-radius: 50px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    display: none;
+  }
+  .replay-btn:hover {
+    background: rgba(72, 202, 228, 0.1);
+    border-color: var(--primary-light);
+    transform: scale(1.04);
+  }
+</style>
+</head>
+<body class="loading">
+
+<!-- ── INTRO LOADER ──────────────────────────── -->
+<div class="loader-overlay" id="loader">
+  <div class="loader-glow"></div>
+  <div style="display:flex; flex-direction:column; align-items:center; position:relative; z-index:1;">
+    <div class="loader-logo">
+      <img src="ecs-logo.png" alt="Eco Cooling Solutions" />
+      <div class="loader-ring">
+        <svg viewBox="0 0 264 264" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#48CAE4" />
+              <stop offset="50%" stop-color="#0077B6" />
+              <stop offset="100%" stop-color="#48CAE4" stop-opacity="0.2" />
+            </linearGradient>
+          </defs>
+          <circle class="ring-glow" cx="132" cy="132" r="130" />
+          <circle class="ring-path" cx="132" cy="132" r="130" />
+        </svg>
+      </div>
+    </div>
+    <div class="loader-wordmark">Eco Cooling Solutions</div>
+    <div class="loader-line"></div>
+    <div class="loader-tagline">Ice Cold Airco Service &middot; Aruba</div>
+  </div>
+</div>
+
+<!-- ── Fake page content (preview only) ─────── -->
+<div class="fake-page">
+  <h1>Welcome to Eco Cooling Solutions</h1>
+  <p>Your site content loads smoothly behind the intro.</p>
+</div>
+
+<!-- Replay button -->
+<button class="replay-btn" id="replayBtn">&#x21bb; Replay</button>
+
+<script>
+  const loader = document.getElementById('loader');
+  const replay = document.getElementById('replayBtn');
+  const LOADER_HOLD = 3000;
+  const LOADER_EXIT = 1300;
+
+  function runLoader() {
+    setTimeout(() => {
+      loader.classList.add('exit');
+      setTimeout(() => {
+        document.body.classList.remove('loading');
+        document.body.classList.add('page-ready');
+        setTimeout(() => {
+          loader.style.display = 'none';
+          replay.style.display = 'block';
+        }, 200);
+      }, LOADER_EXIT);
+    }, LOADER_HOLD);
+  }
+
+  runLoader();
+
+  replay.addEventListener('click', () => {
+    replay.style.display = 'none';
+    document.body.classList.add('loading');
+    document.body.classList.remove('page-ready');
+
+    // Reset loader
+    loader.style.display = '';
+    loader.classList.remove('exit');
+
+    // Force re-trigger all animations by cloning
+    const parent = loader.parentNode;
+    const clone = loader.cloneNode(true);
+    clone.id = 'loader';
+    clone.classList.remove('exit');
+    parent.replaceChild(clone, loader);
+
+    // Re-bind
+    const newLoader = document.getElementById('loader');
+    setTimeout(() => {
+      newLoader.classList.add('exit');
+      setTimeout(() => {
+        document.body.classList.remove('loading');
+        document.body.classList.add('page-ready');
+        setTimeout(() => {
+          newLoader.style.display = 'none';
+          replay.style.display = 'block';
+        }, 200);
+      }, LOADER_EXIT);
+    }, LOADER_HOLD);
+  });
+</script>
+</body>
+</html>

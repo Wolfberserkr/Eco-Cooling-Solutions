@@ -350,9 +350,114 @@
         @media (max-width: 480px) {
             .filter-pill { font-size: 12px; padding: 9px 16px; }
         }
+    
+    /* ===== INTRO LOADER ===== */
+    body.loading { overflow: hidden; }
+    .loader-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #0D1B2A;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      pointer-events: all;
+    }
+    .loader-overlay.exit {
+      animation: loaderExit 1s cubic-bezier(0.77, 0, 0.175, 1) 0.3s forwards;
+    }
+    .loader-logo {
+      width: 220px; height: 220px;
+      position: relative;
+      opacity: 0;
+      transform: scale(0.7);
+      animation: loaderLogoIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+    .loader-logo img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 30px rgba(0, 119, 182, 0.35)) drop-shadow(0 0 60px rgba(72, 202, 228, 0.15));
+    }
+    .loader-ring {
+      position: absolute; inset: -22px;
+      animation: ringRotate 4s linear infinite;
+    }
+    .loader-ring svg { width: 100%; height: 100%; }
+    .loader-ring .ring-path {
+      fill: none; stroke: url(#ringGradient);
+      stroke-width: 1.5; stroke-dasharray: 540; stroke-dashoffset: 540;
+      stroke-linecap: round;
+      animation: drawCircle 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.6s forwards;
+    }
+    .loader-ring .ring-glow {
+      fill: none; stroke: #48CAE4;
+      stroke-width: 4; opacity: 0.12; filter: blur(5px);
+      stroke-dasharray: 540; stroke-dashoffset: 540;
+      animation: drawCircle 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.6s forwards;
+    }
+    .loader-wordmark {
+      margin-top: 32px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 6px; text-transform: uppercase;
+      color: #F0F7FA; opacity: 0; transform: translateY(10px);
+      animation: loaderWordmarkIn 0.6s ease 1.4s forwards;
+    }
+    .loader-line {
+      width: 50px; height: 2px;
+      background: linear-gradient(90deg, #0077B6, #48CAE4);
+      margin-top: 20px; border-radius: 2px;
+      transform: scaleX(0);
+      animation: loaderLineGrow 0.5s ease 1.7s forwards;
+    }
+    .loader-tagline {
+      margin-top: 14px; font-size: 11px;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: #6B7E94; opacity: 0;
+      animation: loaderTagIn 0.5s ease 2.0s forwards;
+    }
+    .loader-glow {
+      position: absolute; width: 420px; height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,119,182,0.08) 0%, transparent 70%);
+      animation: pulseGlow 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes loaderLogoIn { to { opacity: 1; transform: scale(1); } }
+    @keyframes drawCircle { to { stroke-dashoffset: 0; } }
+    @keyframes ringRotate { to { transform: rotate(360deg); } }
+    @keyframes loaderWordmarkIn { to { opacity: 1; transform: translateY(0); } }
+    @keyframes loaderLineGrow { to { transform: scaleX(1); } }
+    @keyframes loaderTagIn { to { opacity: 0.6; } }
+    @keyframes loaderExit { 0% { clip-path: inset(0 0 0 0); } 100% { clip-path: inset(0 0 100% 0); } }
+    @keyframes pulseGlow { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.15); opacity: 0.6; } }
+
     </style>
 </head>
-<body>
+<body class="loading">
+<!-- ── INTRO LOADER ──────────────────────────── -->
+<div class="loader-overlay" id="loader">
+  <div class="loader-glow"></div>
+  <div style="display:flex; flex-direction:column; align-items:center; position:relative; z-index:1;">
+    <div class="loader-logo">
+      <img src="ecs-logo.png" alt="Eco Cooling Solutions" />
+      <div class="loader-ring">
+        <svg viewBox="0 0 264 264" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#48CAE4" />
+              <stop offset="50%" stop-color="#0077B6" />
+              <stop offset="100%" stop-color="#48CAE4" stop-opacity="0.2" />
+            </linearGradient>
+          </defs>
+          <circle class="ring-glow" cx="132" cy="132" r="130" />
+          <circle class="ring-path" cx="132" cy="132" r="130" />
+        </svg>
+      </div>
+    </div>
+    <div class="loader-wordmark">Eco Cooling Solutions</div>
+    <div class="loader-line"></div>
+    <div class="loader-tagline">Ice Cold Airco Service &middot; Aruba</div>
+  </div>
+</div>
+
 
     <!-- ============================================================
          HEADER
@@ -898,6 +1003,23 @@
 
     }());
     </script>
+
+<script>
+  (function() {
+    var loader = document.getElementById('loader');
+    if (!loader) return;
+    var LOADER_HOLD = 3000;
+    var LOADER_EXIT = 1300;
+    setTimeout(function() {
+      loader.classList.add('exit');
+      setTimeout(function() {
+        document.body.classList.remove('loading');
+        document.body.classList.add('page-ready');
+        setTimeout(function() { loader.style.display = 'none'; }, 200);
+      }, LOADER_EXIT);
+    }, LOADER_HOLD);
+  })();
+</script>
 
 </body>
 </html>
